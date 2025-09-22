@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Dimlight — Creative Studio</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <!-- Fonts: Inter for body, Playfair Display for headings -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
@@ -14,10 +15,37 @@
       --bg:#fbfbfb;
       --card-bg:#fff;
       --radius:12px;
+      --content-max:1200px;
     }
+
+    /* Reset & base */
     *{box-sizing:border-box}
-    body{font-family:Inter,system-ui,Segoe UI,Roboto,Arial;margin:0;background:var(--bg);color:#0b1116;-webkit-font-smoothing:antialiased}
-    .wrap{max-width:1200px;margin:0 auto;padding:24px}
+    body{
+      font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      margin:0;
+      background:var(--bg);
+      color:#0b1116;
+      -webkit-font-smoothing:antialiased;
+      line-height:1.62;                /* improved readability */
+      font-size:16px;
+      letter-spacing:0.01em;
+    }
+
+    /* Headings use Playfair Display for a professional, attractive look */
+    h1,h2,h3,h4,h5,h6{
+      font-family: 'Playfair Display', serif;
+      margin-top:0;
+      color: #08101a;
+      letter-spacing:0.01em;
+      line-height:1.15;
+    }
+
+    .wrap{
+      max-width:var(--content-max);
+      margin:0 auto;
+      padding:32px;                    /* slightly more breathing room */
+    }
+
     header{background:var(--card-bg);border-bottom:1px solid rgba(8,16,26,0.04)}
     .header-inner{display:flex;align-items:center;justify-content:space-between;gap:20px}
     .brand{display:flex;gap:14px;align-items:center}
@@ -25,28 +53,28 @@
     .tabs{display:flex;gap:8px;flex-wrap:wrap}
     .tab-btn{background:transparent;border:none;padding:8px 12px;border-radius:8px;cursor:pointer;font-weight:700;color:#253033}
     .tab-btn.active{background:rgba(242,138,30,0.08);color:var(--accent)}
-    main{padding:18px 24px}
+    main{padding:22px 32px}            /* increased vertical spacing */
 
     /* hero / grids */
-    .hero-grid{display:grid;grid-template-columns:1fr 420px;gap:20px;align-items:center}
-    .hero h2{font-size:36px;margin:0}
-    .hero p{color:var(--muted);max-width:640px}
+    .hero-grid{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center} /* slightly larger gap */
+    .hero h2{font-size:38px;margin:0}
+    .hero p{color:var(--muted);max-width:720px}
     .hero-media img{width:100%;border-radius:12px;display:block}
 
     .section-heading{font-size:20px;margin:0}
 
     /* cards and stat */
-    .feature-card,.stat-card,.card{background:var(--card-bg);padding:18px;border-radius:var(--radius);box-shadow:0 8px 20px rgba(20,20,30,0.04)}
-    .feature-card{display:flex;flex-direction:column;gap:8px}
+    .feature-card,.stat-card,.card{background:var(--card-bg);padding:20px;border-radius:var(--radius);box-shadow:0 8px 20px rgba(20,20,30,0.04)}
+    .feature-card{display:flex;flex-direction:column;gap:10px}
     .stat-card{text-align:center}
     .center{text-align:center}
 
     /* ABOUT scoped */
-    .about-hero{background:var(--card-bg);border-radius:14px;box-shadow:0 10px 28px rgba(20,20,30,0.06);padding:36px;display:grid;grid-template-columns:1fr 320px;gap:20px;align-items:center;margin-top:26px}
+    .about-hero{background:var(--card-bg);border-radius:14px;box-shadow:0 10px 28px rgba(20,20,30,0.06);padding:40px;display:grid;grid-template-columns:1fr 320px;gap:22px;align-items:center;margin-top:28px}
     .about-kicker{color:var(--accent);font-weight:700;letter-spacing:0.06em;margin-bottom:10px;font-size:13px}
-    .about-title{font-weight:800;font-size:40px;line-height:1.02;color:#08101a;margin:0 0 12px}
+    .about-title{font-weight:700;font-size:42px;line-height:1.02;color:#08101a;margin:0 0 12px}
     .about-title .accent{color:var(--accent);display:block}
-    .about-lead{color:#5b6970;max-width:720px;font-size:16px;margin-bottom:12px}
+    .about-lead{color:#5b6970;max-width:720px;font-size:16.5px;margin-bottom:14px}
     .image-card img{width:100%;height:220px;object-fit:cover;border-radius:10px;display:block}
     .card-body{padding-top:8px;color:#6a767c;font-size:14px}
 
@@ -56,32 +84,69 @@
     /* contact input styling (keeps theme, not browser default) */
     input[type="text"], input[type="email"], input[type="tel"], textarea, select {
       width:100%;
-      padding:12px;
+      padding:14px;                     /* more comfortable padding */
       border-radius:10px;
       border:1px solid #e6e9ec;
       background:transparent;
       color:inherit;
-      font-size:14px;
+      font-size:15px;
       outline-color:var(--accent);
+      transition:box-shadow .16s ease, transform .08s ease;
+    }
+    input[type="text"]:focus, input[type="email"]:focus, textarea:focus {
+      box-shadow:0 6px 18px rgba(242,138,30,0.08);
+      transform:translateY(-1px);
     }
 
-    .btn{display:inline-block;padding:10px 14px;border-radius:8px;background:var(--accent);color:#fff;text-decoration:none;border:none;cursor:pointer}
+    .btn{display:inline-block;padding:12px 16px;border-radius:8px;background:var(--accent);color:#fff;text-decoration:none;border:none;cursor:pointer;font-weight:700}
     .btn.secondary{background:transparent;border:1px solid rgba(8,16,26,0.06);color:#253033}
 
-    .tab-pane{display:none;padding:18px 0}
+    .tab-pane{display:none;padding:22px 0}
     .tab-pane.active{display:block}
 
-    footer{padding:26px 0;background:var(--card-bg);margin-top:30px;border-top:1px solid rgba(8,16,26,0.04);text-align:center}
+    footer{padding:30px 0;background:var(--card-bg);margin-top:36px;border-top:1px solid rgba(8,16,26,0.04);text-align:center}
 
     /* small utilities */
     .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
     .mini{font-size:13px;color:var(--muted)}
+
+    /* FAQ highlight styling: summary gets a soft accent background and padding, details content to match */
+    details{margin-bottom:8px}
+    details summary{
+      list-style:none;
+      cursor:pointer;
+      padding:12px 16px;
+      border-radius:10px;
+      background: linear-gradient(90deg, rgba(242,138,30,0.08), rgba(242,138,30,0.02));
+      font-weight:700;
+      color:#0b1116;
+      outline:none;
+      transition:background .18s ease, transform .08s ease;
+      box-shadow: 0 1px 0 rgba(0,0,0,0.02) inset;
+    }
+    details[open] summary{
+      border-bottom-left-radius:0;
+      border-bottom-right-radius:0;
+      background: linear-gradient(90deg, rgba(242,138,30,0.10), rgba(242,138,30,0.03));
+    }
+    /* content area under each question */
+    details > div{
+      padding:14px 16px;
+      background:var(--card-bg);
+      border-radius:0 0 10px 10px;
+      color:var(--muted);
+      margin-bottom:8px;
+      box-shadow:0 6px 18px rgba(20,20,30,0.04);
+      line-height:1.7;
+    }
 
     @media (max-width:980px){
       .hero-grid{grid-template-columns:1fr}
       .about-hero{grid-template-columns:1fr;padding:20px}
       .portfolio-grid{grid-template-columns:1fr}
       .grid-3{grid-template-columns:1fr}
+      .wrap{padding:20px}
+      main{padding:18px 20px}
     }
   </style>
 </head>
@@ -194,9 +259,9 @@
         </div>
 
         <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:20px">
-          <div class="stat-card"><img src="https://via.placeholder.com/300x140?text=Award+1" alt=""><div style="margin-top:10px;font-weight:700">Best Short Film 2023</div><p class="mini" style="margin-top:6px">Honoured at National Film Festival for storytelling excellence.</p></div>
-          <div class="stat-card"><img src="https://via.placeholder.com/600x360?text=Case+2" alt=""><div style="font-weight:700; margin-top:10px">Creative Excellence 2022</div><p class="mini" style="margin-top:6px">Recognised for innovation in branded campaigns.</p></div>
-          <div class="stat-card"><img src="https://via.placeholder.com/600x360?text=Case+3" alt=""><div style="font-weight:700; margin-top:10px">Emerging Filmmaker</div><p class="mini" style="margin-top:6px">Celebrated for creative direction and impact.</p></div>
+          <div class="stat-card"><img src="https://via.placeholder.com/300x140?text=Award+1" alt=""><div style="margin-top:10px;font-weight:700">Best Short Film 2023</div><p style="margin-top:6px;color:var(--muted)">Honoured at National Film Festival for storytelling excellence.</p></div>
+          <div class="stat-card"><img src="https://via.placeholder.com/600x360?text=Case+2" alt=""><div style="font-weight:700; margin-top:10px">Creative Excellence 2022</div><p style="margin-top:6px;color:var(--muted)">Recognised for innovation in branded campaigns.</p></div>
+          <div class="stat-card"><img src="https://via.placeholder.com/600x360?text=Case+3" alt=""><div style="font-weight:700; margin-top:10px">Emerging Filmmaker</div><p style="margin-top:6px;color:var(--muted)">Celebrated for creative direction and impact.</p></div>
         </div>
       </section>
 
@@ -207,15 +272,16 @@
         </div>
 
         <div class="grow-grid" style="margin-top:20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px">
-          <div class="stat-card">📊<div style="margin-top:8px;font-weight:700">Deep Research</div><p class="mini" style="margin-top:8px">Audience and competitor insight to inform creative strategy.</p></div>
-          <div class="stat-card">💡<div style="margin-top:8px;font-weight:700">Creative Concepts</div><p class="mini" style="margin-top:8px">Story angles and hooks tailored to performance.</p></div>
-          <div class="stat-card">🚀<div style="margin-top:8px;font-weight:700">Smart Distribution</div><p class="mini" style="margin-top:8px">Optimised launch + paid media for ROI.</p></div>
+          <div class="stat-card">📊<div style="margin-top:8px;font-weight:700">Deep Research</div><p style="margin-top:8px;color:var(--muted)">Audience and competitor insight to inform creative strategy.</p></div>
+          <div class="stat-card">💡<div style="margin-top:8px;font-weight:700">Creative Concepts</div><p style="margin-top:8px;color:var(--muted)">Story angles and hooks tailored to performance.</p></div>
+          <div class="stat-card">🚀<div style="margin-top:8px;font-weight:700">Smart Distribution</div><p style="margin-top:8px;color:var(--muted)">Optimised launch + paid media for ROI.</p></div>
         </div>
       </section>
 
       <section style="padding-top:18px;padding-bottom:18px">
         <div class="center"><h3 class="section-heading">Frequently Asked Questions ❓</h3></div>
         <div style="max-width:900px; margin:20px auto; display:grid; gap:12px">
+          <!-- FAQ items: only visuals changed via CSS above -->
           <details><summary>How long does a project take?</summary><div style="margin-top:8px;color:var(--muted)">Short reels: 3–7 days. Corporate films: 2–4 weeks depending on scope.</div></details>
           <details><summary>Do you publish on socials?</summary><div style="margin-top:8px;color:var(--muted)">Yes — we deliver platform-ready assets or publish & optimise for you.</div></details>
           <details><summary>What's the typical budget?</summary><div style="margin-top:8px;color:var(--muted)">Starter reels begin at ₹15,000; full campaigns are quoted custom.</div></details>
@@ -236,6 +302,7 @@
         <div class="feature-card"><img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" width="48" alt=""><div style="font-weight:700; margin-top:10px">Social Reels</div><p class="mini" style="margin-top:8px">Short-form content for growth & reach.</p></div>
         <div class="feature-card"><img src="https://cdn-icons-png.flaticon.com/512/2920/2920277.png" width="48" alt=""><div style="font-weight:700; margin-top:10px">Corporate Campaigns</div><p class="mini" style="margin-top:8px">End-to-end campaign production.</p></div>
         <div class="feature-card"><img src="https://cdn-icons-png.flaticon.com/512/3208/3208676.png" width="48" alt=""><div style="font-weight:700; margin-top:10px">Motion & VFX</div><p class="mini" style="margin-top:8px">Animations and subtle visual effects.</p></div>
+
         <div class="feature-card"><img src="https://cdn-icons-png.flaticon.com/512/616/616489.png" width="48" alt=""><div style="font-weight:700; margin-top:10px">Influencer Integrations</div><p class="mini" style="margin-top:8px">Creator partnerships & shoots.</p></div>
         <div class="feature-card"><img src="https://cdn-icons-png.flaticon.com/512/1041/1041882.png" width="48" alt=""><div style="font-weight:700; margin-top:10px">Brand Strategy</div><p class="mini" style="margin-top:8px">Positioning, messaging & roadmaps.</p></div>
         <div class="feature-card"><img src="https://cdn-icons-png.flaticon.com/512/1828/1828462.png" width="48" alt=""><div style="font-weight:700; margin-top:10px">Live Event Coverage</div><p class="mini" style="margin-top:8px">Highlights, ceremony films & recap reels.</p></div>
@@ -359,7 +426,7 @@
       </section>
     </section>
 
-    <!-- CONTACT (REPLACED: single implementation) -->
+    <!-- CONTACT (unchanged content, layout preserved) -->
     <section id="contact-pane" class="tab-pane" aria-labelledby="contact">
       <!-- Hero -->
       <section style="padding-top:36px;padding-bottom:8px">
@@ -440,7 +507,12 @@
         <a href="#" onclick="switchTo('contact'); return false">Contact</a>
       </nav>
 
-      <div class="socials"><a class="badge" href="https://www.instagram.com/dimlightdigitals/">Instagram</a><a class="badge" href="#">LinkedIn</a><a class="badge" href="https://www.youtube.com/@dimlight_creations">YouTube</a><a class="badge" href="https://api.whatsapp.com/send/?phone=7207546134&text&type=phone_number&app_absent=0">WhatsApp</a></div>
+      <div class="socials" style="margin-top:12px; display:flex; gap:14px; justify-content:center; align-items:center;">
+        <a class="badge" href="https://www.instagram.com/dimlightdigitals/">Instagram</a>
+        <a class="badge" href="#">LinkedIn</a>
+        <a class="badge" href="https://www.youtube.com/@dimlight_creations">YouTube</a>
+        <a class="badge" href="https://api.whatsapp.com/send/?phone=7207546134&text&type=phone_number&app_absent=0">WhatsApp</a>
+      </div>
 
     </div>
   </footer>
@@ -504,7 +576,6 @@
           document.getElementById('cf-email').focus();
           return;
         }
-        // Use browser email pattern validation as well (type=email)
         if(!message){
           alert('Please tell us about your project.');
           document.getElementById('cf-message').focus();
@@ -515,9 +586,7 @@
         alert('Thanks! We will get back to you shortly.');
         form.reset();
 
-        // optional tracking hook
         if(window.dataLayer) dataLayer.push({event:'contact_form_submitted', name: name});
-        // redirect or UI change could be added here
       });
     })();
 
