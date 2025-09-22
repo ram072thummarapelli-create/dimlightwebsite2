@@ -1,78 +1,91 @@
 <!doctype html>
-<html lang='en'>
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Dimlight — Creative Studio (Thrive-style theme)</title>
+  <title>Dimlight — Creative Studio</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css">
-  <!-- Scoped About styles -->
   <style>
-    /* Scoped About styles */
-    .about-hero {
-      background: #fff;
-      border-radius: 14px;
-      box-shadow: 0 10px 28px rgba(20,20,30,0.06);
-      padding: 44px;
-      display: grid;
-      grid-template-columns: 1fr 380px;
-      gap: 28px;
-      align-items: center;
-      margin-top: 26px;
+    :root{
+      --accent:#f28a1e;
+      --muted:#6b7780;
+      --bg:#fbfbfb;
+      --card-bg:#fff;
+      --radius:12px;
     }
-    .about-kicker { color: #f28a1e; font-weight:700; letter-spacing:0.06em; margin-bottom:10px; font-size:13px; }
-    .about-title { font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; font-weight:800; font-size:48px; line-height:1.02; color:#08101a; margin:0 0 16px 0; }
-    .about-title .accent { color:#f28a1e; display:block; }
-    .about-lead { color:#5b6970; max-width:760px; font-size:17px; margin-bottom:20px; }
-    .about-cta { display:flex; gap:12px; align-items:center; margin-top:6px; }
-    .btn-ghost {
-      border:1px solid rgba(8,16,26,0.08);
-      background: transparent;
-      padding:10px 14px;
-      border-radius:8px;
-      cursor:pointer;
-      font-weight:600;
+    *{box-sizing:border-box}
+    body{font-family:Inter,system-ui,Segoe UI,Roboto,Arial;margin:0;background:var(--bg);color:#0b1116;-webkit-font-smoothing:antialiased}
+    .wrap{max-width:1200px;margin:0 auto;padding:24px}
+    header{background:var(--card-bg);border-bottom:1px solid rgba(8,16,26,0.04)}
+    .header-inner{display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{display:flex;gap:14px;align-items:center}
+    .logo{width:48px;height:48px;border-radius:8px;background:linear-gradient(135deg,#111,#333);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800}
+    .tabs{display:flex;gap:8px;flex-wrap:wrap}
+    .tab-btn{background:transparent;border:none;padding:8px 12px;border-radius:8px;cursor:pointer;font-weight:700;color:#253033}
+    .tab-btn.active{background:rgba(242,138,30,0.08);color:var(--accent)}
+    main{padding:18px 24px}
+
+    /* hero / grids */
+    .hero-grid{display:grid;grid-template-columns:1fr 420px;gap:20px;align-items:center}
+    .hero h2{font-size:36px;margin:0}
+    .hero p{color:var(--muted);max-width:640px}
+    .hero-media img{width:100%;border-radius:12px;display:block}
+
+    .section-heading{font-size:20px;margin:0}
+
+    /* cards and stat */
+    .feature-card,.stat-card,.card{background:var(--card-bg);padding:18px;border-radius:var(--radius);box-shadow:0 8px 20px rgba(20,20,30,0.04)}
+    .feature-card{display:flex;flex-direction:column;gap:8px}
+    .stat-card{text-align:center}
+    .center{text-align:center}
+
+    /* ABOUT scoped */
+    .about-hero{background:var(--card-bg);border-radius:14px;box-shadow:0 10px 28px rgba(20,20,30,0.06);padding:36px;display:grid;grid-template-columns:1fr 320px;gap:20px;align-items:center;margin-top:26px}
+    .about-kicker{color:var(--accent);font-weight:700;letter-spacing:0.06em;margin-bottom:10px;font-size:13px}
+    .about-title{font-weight:800;font-size:40px;line-height:1.02;color:#08101a;margin:0 0 12px}
+    .about-title .accent{color:var(--accent);display:block}
+    .about-lead{color:#5b6970;max-width:720px;font-size:16px;margin-bottom:12px}
+    .image-card img{width:100%;height:220px;object-fit:cover;border-radius:10px;display:block}
+    .card-body{padding-top:8px;color:#6a767c;font-size:14px}
+
+    /* portfolio thumbs */
+    .portfolio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+
+    /* contact input styling (keeps theme, not browser default) */
+    input[type="text"], input[type="email"], input[type="tel"], textarea, select {
+      width:100%;
+      padding:12px;
+      border-radius:10px;
+      border:1px solid #e6e9ec;
+      background:transparent;
+      color:inherit;
+      font-size:14px;
+      outline-color:var(--accent);
     }
-    .image-card {
-      background:#fff;
-      border-radius:12px;
-      overflow:hidden;
-      box-shadow: 0 6px 18px rgba(20,20,30,0.06);
-      display:flex;
-      flex-direction:column;
-      align-items:stretch;
-      height:100%;
-    }
-    .image-card img { width:100%; height:220px; object-fit:cover; display:block; }
-    .image-card .card-body { padding:14px 18px; color:#6a767c; font-size:14px; }
-    .panel-caption { font-weight:600; color:#394651; margin-bottom:6px; }
-    /* two-column feature cards below */
-    .about-cards {
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:20px;
-      margin-top:28px;
-    }
-    .about-card {
-      background:#fff;
-      border-radius:12px;
-      padding:22px;
-      box-shadow: 0 10px 28px rgba(20,20,30,0.04);
-    }
-    .about-card h4 { margin:0 0 8px 0; font-size:20px; color:#08101a; }
-    .about-card p { margin:0; color:#5b6970; line-height:1.6; }
-    /* Responsive */
-    @media (max-width:900px){
-      .about-hero { grid-template-columns: 1fr; padding:26px; }
-      .image-card img { height:180px; }
-      .about-title { font-size:32px; }
-      .about-cards { grid-template-columns:1fr; }
+
+    .btn{display:inline-block;padding:10px 14px;border-radius:8px;background:var(--accent);color:#fff;text-decoration:none;border:none;cursor:pointer}
+    .btn.secondary{background:transparent;border:1px solid rgba(8,16,26,0.06);color:#253033}
+
+    .tab-pane{display:none;padding:18px 0}
+    .tab-pane.active{display:block}
+
+    footer{padding:26px 0;background:var(--card-bg);margin-top:30px;border-top:1px solid rgba(8,16,26,0.04);text-align:center}
+
+    /* small utilities */
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .mini{font-size:13px;color:var(--muted)}
+
+    @media (max-width:980px){
+      .hero-grid{grid-template-columns:1fr}
+      .about-hero{grid-template-columns:1fr;padding:20px}
+      .portfolio-grid{grid-template-columns:1fr}
+      .grid-3{grid-template-columns:1fr}
     }
   </style>
 </head>
-<body>
+
 <body>
   <header>
     <div class="wrap header-inner">
@@ -95,7 +108,7 @@
   </header>
 
   <main class="wrap">
-    <!-- HOME pane -->
+    <!-- HOME -->
     <section id="home-pane" class="tab-pane active" aria-labelledby="home">
       <div class="hero-grid">
         <div>
@@ -104,18 +117,17 @@
             <p>Creative films, thumb-stopping reels, and campaigns built to grow revenue. We focus on measurable growth — views, leads and sales.</p>
           </div>
 
-          <div class="hero-controls" aria-hidden="false" style="margin-top:16px">
+          <div style="margin-top:16px">
             <div style="display:flex;gap:12px;align-items:center">
-              <button class="btn-primary" data-action="open-contact">Start a project →</button>
-              <button class="btn-secondary" data-action="open-services">Explore services</button>
+              <button class="btn" data-action="open-contact">Start a project →</button>
+              <button class="btn secondary" data-action="open-services">Explore services</button>
             </div>
             <div style="font-size:14px;color:var(--muted);margin-top:10px">Trusted by brands & storytellers</div>
           </div>
-
         </div>
 
         <div class="hero-media" aria-hidden="false">
-          <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1400&q=60" alt="Hero visual" style="border-radius:12px">
+          <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1400&q=60" alt="Hero visual">
         </div>
       </div>
 
@@ -127,17 +139,19 @@
         <div class="feature-card">
           <div class="emoji">🚀</div>
           <strong>Growth Driven</strong>
-          <p style="color:var(--muted); margin-top:8px">We build for measurable impact — reach, leads & sales.</p>
+          <p class="mini" style="margin-top:8px">We build for measurable impact — reach, leads & sales.</p>
         </div>
+
         <div class="feature-card">
           <div class="emoji">🎬</div>
           <strong>Cinematic Quality</strong>
-          <p style="color:var(--muted); margin-top:8px">Director-led craft and polished production values.</p>
+          <p class="mini" style="margin-top:8px">Director-led craft and polished production values.</p>
         </div>
+
         <div class="feature-card">
           <div class="emoji">⚡</div>
           <strong>Fast & Agile</strong>
-          <p style="color:var(--muted); margin-top:8px">Quick turnarounds while keeping creative quality high.</p>
+          <p class="mini" style="margin-top:8px">Quick turnarounds while keeping creative quality high.</p>
         </div>
       </div>
 
@@ -147,11 +161,11 @@
           <p style="margin-top:12px; max-width:760px; margin-left:auto; margin-right:auto">From fast-moving startups to established companies, we combine director-led creativity with performance marketing to produce content that looks cinematic and converts.</p>
         </div>
 
-        <div class="stats-grid" style="margin-top:28px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
-          <div class="stat-card"><strong style="font-size:22px">30+</strong><div style="margin-top:8px;font-weight:700">Award-Winning Short Films</div><p style="margin-top:8px;color:var(--muted)">Festival wins & curated storytelling.</p></div>
-          <div class="stat-card"><strong style="font-size:22px">100+</strong><div style="margin-top:8px;font-weight:700">Corporate Videos</div><p style="margin-top:8px;color:var(--muted)">Polished, on-brand video for internal & external comms.</p></div>
-          <div class="stat-card"><strong style="font-size:22px">Global</strong><div style="margin-top:8px;font-weight:700">Clients & Recognition</div><p style="margin-top:8px;color:var(--muted)">Work trusted across markets & festivals.</p></div>
-          <div class="stat-card"><strong style="font-size:22px">High</strong><div style="margin-top:8px;font-weight:700">Google Reviews</div><p style="margin-top:8px;color:var(--muted)">Highly rated by clients — see our feedback.</p></div>
+        <div style="margin-top:28px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+          <div class="stat-card"><strong style="font-size:22px">30+</strong><div style="margin-top:8px;font-weight:700">Award-Winning Short Films</div><p class="mini" style="margin-top:8px">Festival wins & curated storytelling.</p></div>
+          <div class="stat-card"><strong style="font-size:22px">100+</strong><div style="margin-top:8px;font-weight:700">Corporate Videos</div><p class="mini" style="margin-top:8px">Polished, on-brand video for internal & external comms.</p></div>
+          <div class="stat-card"><strong style="font-size:22px">Global</strong><div style="margin-top:8px;font-weight:700">Clients & Recognition</div><p class="mini" style="margin-top:8px">Work trusted across markets & festivals.</p></div>
+          <div class="stat-card"><strong style="font-size:22px">High</strong><div style="margin-top:8px;font-weight:700">Google Reviews</div><p class="mini" style="margin-top:8px">Highly rated by clients — see our feedback.</p></div>
         </div>
       </section>
 
@@ -162,7 +176,7 @@
 
       <section style="padding-top:18px;padding-bottom:18px">
         <h3 class="section-heading left" style="margin-bottom:12px">What Our Clients Say</h3>
-        <div class="marquee" id="marqueeWrap" style="overflow:hidden;background:#fff;padding:12px;border-radius:10px;box-shadow:0 8px 18px rgba(20,20,30,0.04)">
+        <div class="marquee" id="marqueeWrap" style="overflow:hidden;background:var(--card-bg);padding:12px;border-radius:10px;box-shadow:0 8px 18px rgba(20,20,30,0.04)">
           <div class="marquee-track" id="marqueeTrack" style="display:flex;gap:24px;animation:marquee 18s linear infinite">
             <div class="quote">“Dimlight delivered a film that changed how our customers see the brand.” — CMO, Retail</div>
             <div class="quote">“Director-led craft with measurable growth outcomes. Rare combination.” — Head of Growth</div>
@@ -180,9 +194,9 @@
         </div>
 
         <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:20px">
-          <div class="stat-card"><img src="https://via.placeholder.com/300x140?text=Award+1" alt=""><div style="margin-top:10px;font-weight:700">Best Short Film 2023</div><p style="margin-top:6px;color:var(--muted)">Honoured at National Film Festival for storytelling excellence.</p></div>
-          <div class="stat-card"><img src="https://via.placeholder.com/600x360?text=Case+2" alt=""><div style="font-weight:700; margin-top:10px">Creative Excellence 2022</div><p style="margin-top:6px;color:var(--muted)">Recognised for innovation in branded campaigns.</p></div>
-          <div class="stat-card"><img src="https://via.placeholder.com/600x360?text=Case+3" alt=""><div style="font-weight:700; margin-top:10px">Emerging Filmmaker</div><p style="margin-top:6px;color:var(--muted)">Celebrated for creative direction and impact.</p></div>
+          <div class="stat-card"><img src="https://via.placeholder.com/300x140?text=Award+1" alt=""><div style="margin-top:10px;font-weight:700">Best Short Film 2023</div><p class="mini" style="margin-top:6px">Honoured at National Film Festival for storytelling excellence.</p></div>
+          <div class="stat-card"><img src="https://via.placeholder.com/600x360?text=Case+2" alt=""><div style="font-weight:700; margin-top:10px">Creative Excellence 2022</div><p class="mini" style="margin-top:6px">Recognised for innovation in branded campaigns.</p></div>
+          <div class="stat-card"><img src="https://via.placeholder.com/600x360?text=Case+3" alt=""><div style="font-weight:700; margin-top:10px">Emerging Filmmaker</div><p class="mini" style="margin-top:6px">Celebrated for creative direction and impact.</p></div>
         </div>
       </section>
 
@@ -193,9 +207,9 @@
         </div>
 
         <div class="grow-grid" style="margin-top:20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px">
-          <div class="stat-card">📊<div style="margin-top:8px;font-weight:700">Deep Research</div><p style="margin-top:8px;color:var(--muted)">Audience and competitor insight to inform creative strategy.</p></div>
-          <div class="stat-card">💡<div style="margin-top:8px;font-weight:700">Creative Concepts</div><p style="margin-top:8px;color:var(--muted)">Story angles and hooks tailored to performance.</p></div>
-          <div class="stat-card">🚀<div style="margin-top:8px;font-weight:700">Smart Distribution</div><p style="margin-top:8px;color:var(--muted)">Optimised launch + paid media for ROI.</p></div>
+          <div class="stat-card">📊<div style="margin-top:8px;font-weight:700">Deep Research</div><p class="mini" style="margin-top:8px">Audience and competitor insight to inform creative strategy.</p></div>
+          <div class="stat-card">💡<div style="margin-top:8px;font-weight:700">Creative Concepts</div><p class="mini" style="margin-top:8px">Story angles and hooks tailored to performance.</p></div>
+          <div class="stat-card">🚀<div style="margin-top:8px;font-weight:700">Smart Distribution</div><p class="mini" style="margin-top:8px">Optimised launch + paid media for ROI.</p></div>
         </div>
       </section>
 
@@ -208,10 +222,9 @@
           <details><summary>Do you offer revisions?</summary><div style="margin-top:8px;color:var(--muted)">Yes — every package includes revision cycles for client feedback.</div></details>
         </div>
       </section>
-
     </section>
 
-    <!-- SERVICES pane -->
+    <!-- SERVICES -->
     <section id="services-pane" class="tab-pane" aria-labelledby="services">
       <div class="center">
         <h3 class="section-heading">Our Services</h3>
@@ -219,52 +232,64 @@
       </div>
 
       <div style="margin-top:28px; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px">
-        <div class="feature-card"><img src="https://cdn-icons-png.flaticon.com/512/3209/3209887.png" width="48" alt=""><div style="font-weight:700; margin-top:10px">Cinematic Films</div><p style="color:var(--muted); margin-top:8px">Brand films, product launches & storytelling.</p></div>
-        <div class="feature-card"><img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" width="48" alt=""><div style="font-weight:700; margin-top:10px">Social Reels</div><p style="color:var(--muted); margin-top:8px">Short-form content for growth & reach.</p></div>
-        <div class="feature-card"><img src="https://cdn-icons-png.flaticon.com/512/2920/2920277.png" width="48" alt=""><div style="font-weight:700; margin-top:10px">Corporate Campaigns</div><p style="color:var(--muted); margin-top:8px">End-to-end campaign production.</p></div>
-        <div class="feature-card"><img src="https://cdn-icons-png.flaticon.com/512/3208/3208676.png" width="48" alt=""><div style="font-weight:700; margin-top:10px">Motion & VFX</div><p style="color:var(--muted); margin-top:8px">Animations and subtle visual effects.</p></div>
-
-        <div class="feature-card"><img src="https://cdn-icons-png.flaticon.com/512/616/616489.png" width="48" alt=""><div style="font-weight:700; margin-top:10px">Influencer Integrations</div><p style="color:var(--muted); margin-top:8px">Creator partnerships & shoots.</p></div>
-        <div class="feature-card"><img src="https://cdn-icons-png.flaticon.com/512/1041/1041882.png" width="48" alt=""><div style="font-weight:700; margin-top:10px">Brand Strategy</div><p style="color:var(--muted); margin-top:8px">Positioning, messaging & roadmaps.</p></div>
-        <div class="feature-card"><img src="https://cdn-icons-png.flaticon.com/512/1828/1828462.png" width="48" alt=""><div style="font-weight:700; margin-top:10px">Live Event Coverage</div><p style="color:var(--muted); margin-top:8px">Highlights, ceremony films & recap reels.</p></div>
-        <div class="feature-card"><img src="https://cdn-icons-png.flaticon.com/512/2922/2922835.png" width="48" alt=""><div style="font-weight:700; margin-top:10px">Distribution & Ads</div><p style="color:var(--muted); margin-top:8px">Paid media creative & optimisation.</p></div>
+        <div class="feature-card"><img src="https://cdn-icons-png.flaticon.com/512/3209/3209887.png" width="48" alt=""><div style="font-weight:700; margin-top:10px">Cinematic Films</div><p class="mini" style="margin-top:8px">Brand films, product launches & storytelling.</p></div>
+        <div class="feature-card"><img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" width="48" alt=""><div style="font-weight:700; margin-top:10px">Social Reels</div><p class="mini" style="margin-top:8px">Short-form content for growth & reach.</p></div>
+        <div class="feature-card"><img src="https://cdn-icons-png.flaticon.com/512/2920/2920277.png" width="48" alt=""><div style="font-weight:700; margin-top:10px">Corporate Campaigns</div><p class="mini" style="margin-top:8px">End-to-end campaign production.</p></div>
+        <div class="feature-card"><img src="https://cdn-icons-png.flaticon.com/512/3208/3208676.png" width="48" alt=""><div style="font-weight:700; margin-top:10px">Motion & VFX</div><p class="mini" style="margin-top:8px">Animations and subtle visual effects.</p></div>
+        <div class="feature-card"><img src="https://cdn-icons-png.flaticon.com/512/616/616489.png" width="48" alt=""><div style="font-weight:700; margin-top:10px">Influencer Integrations</div><p class="mini" style="margin-top:8px">Creator partnerships & shoots.</p></div>
+        <div class="feature-card"><img src="https://cdn-icons-png.flaticon.com/512/1041/1041882.png" width="48" alt=""><div style="font-weight:700; margin-top:10px">Brand Strategy</div><p class="mini" style="margin-top:8px">Positioning, messaging & roadmaps.</p></div>
+        <div class="feature-card"><img src="https://cdn-icons-png.flaticon.com/512/1828/1828462.png" width="48" alt=""><div style="font-weight:700; margin-top:10px">Live Event Coverage</div><p class="mini" style="margin-top:8px">Highlights, ceremony films & recap reels.</p></div>
+        <div class="feature-card"><img src="https://cdn-icons-png.flaticon.com/512/2922/2922835.png" width="48" alt=""><div style="font-weight:700; margin-top:10px">Distribution & Ads</div><p class="mini" style="margin-top:8px">Paid media creative & optimisation.</p></div>
       </div>
 
-      <div class="container" style="margin-top:20px"><h2>Add-ons</h2>
-        <div class="grid cards-3" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:12px">
-          <div class="card" style="background:#fff;padding:16px;border-radius:10px;box-shadow:0 8px 18px rgba(20,20,30,0.04)"><h3>Brand Film</h3><p>1–3 min cinematic story for founders, products or events.</p></div>
-          <div class="card" style="background:#fff;padding:16px;border-radius:10px;box-shadow:0 8px 18px rgba(20,20,30,0.04)"><h3>YouTube Edit</h3><p>Long-form edits, captions, chapters, and thumbnails.</p></div>
-          <div class="card" style="background:#fff;padding:16px;border-radius:10px;box-shadow:0 8px 18px rgba(20,20,30,0.04)"><h3>Paid Campaigns</h3><p>Simple, local reach ads via Meta or LinkedIn to amplify results.</p></div>
+      <div style="margin-top:20px">
+        <h2>Add-ons</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:12px">
+          <div class="card"><h3>Brand Film</h3><p class="mini">1–3 min cinematic story for founders, products or events.</p></div>
+          <div class="card"><h3>YouTube Edit</h3><p class="mini">Long-form edits, captions, chapters, and thumbnails.</p></div>
+          <div class="card"><h3>Paid Campaigns</h3><p class="mini">Simple, local reach ads via Meta or LinkedIn to amplify results.</p></div>
         </div>
       </div>
     </section>
 
-    <!-- PORTFOLIO pane -->
+    <!-- PORTFOLIO -->
     <section id="portfolio-pane" class="tab-pane" aria-labelledby="portfolio">
       <h1> Our Works</h1>
       <div class="section">
-        <div class="container grid portfolio-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
-          <div class="thumb" style="height:220px; overflow:hidden; border-radius:14px;"><iframe width="100%" height="220" src="https://www.youtube.com/embed/0Lj4ysomn0M?enablejsapi=1&modestbranding=1&rel=0&showinfo=0" title="YouTube video player" frameborder="0" allowfullscreen></iframe></div>
-          <div class="thumb" style="height:220px; overflow:hidden; border-radius:14px;"><iframe width="100%" height="220" src="https://www.youtube.com/embed/ouDX363DKFg?enablejsapi=1&modestbranding=1&rel=0&showinfo=0" title="YouTube video player" frameborder="0" allowfullscreen></iframe></div>
-          <div class="thumb" style="height:220px; overflow:hidden; border-radius:14px;"><iframe width="100%" height="220" src="https://www.youtube.com/embed/r8tRxU-wW5s?enablejsapi=1&modestbranding=1&rel=0&showinfo=0" title="YouTube video player" frameborder="0" allowfullscreen></iframe></div>
-          <div class="thumb" style="height:220px; overflow:hidden; border-radius:14px;"><iframe width="100%" height="220" src="https://www.youtube.com/embed/NSq2s2-yvFM?enablejsapi=1&modestbranding=1&rel=0&showinfo=0" title="YouTube video player" frameborder="0" allowfullscreen></iframe></div>
-          <div class="thumb" style="height:220px; overflow:hidden; border-radius:14px;"><iframe width="100%" height="220" src="https://www.youtube.com/embed/p_FVQvhmIzQ?enablejsapi=1&modestbranding=1&rel=0&showinfo=0" title="YouTube video player" frameborder="0" allowfullscreen></iframe></div>
-          <div class="thumb" style="height:220px; overflow:hidden; border-radius:14px;"><iframe width="100%" height="220" src="https://www.youtube.com/embed/vP71vc-ZdrI?enablejsapi=1&modestbranding=1&rel=0&showinfo=0" title="YouTube video player" frameborder="0" allowfullscreen></iframe></div>
+        <div class="portfolio-grid">
+          <div class="thumb" style="height:220px; overflow:hidden; border-radius:14px;">
+            <iframe width="100%" height="220" src="https://www.youtube.com/embed/0Lj4ysomn0M?enablejsapi=1&modestbranding=1&rel=0" frameborder="0" allowfullscreen></iframe>
+          </div>
+          <div class="thumb" style="height:220px; overflow:hidden; border-radius:14px;">
+            <iframe width="100%" height="220" src="https://www.youtube.com/embed/ouDX363DKFg?enablejsapi=1&modestbranding=1&rel=0" frameborder="0" allowfullscreen></iframe>
+          </div>
+          <div class="thumb" style="height:220px; overflow:hidden; border-radius:14px;">
+            <iframe width="100%" height="220" src="https://www.youtube.com/embed/r8tRxU-wW5s?enablejsapi=1&modestbranding=1&rel=0" frameborder="0" allowfullscreen></iframe>
+          </div>
+          <div class="thumb" style="height:220px; overflow:hidden; border-radius:14px;">
+            <iframe width="100%" height="220" src="https://www.youtube.com/embed/NSq2s2-yvFM?enablejsapi=1&modestbranding=1&rel=0" frameborder="0" allowfullscreen></iframe>
+          </div>
+          <div class="thumb" style="height:220px; overflow:hidden; border-radius:14px;">
+            <iframe width="100%" height="220" src="https://www.youtube.com/embed/p_FVQvhmIzQ?enablejsapi=1&modestbranding=1&rel=0" frameborder="0" allowfullscreen></iframe>
+          </div>
+          <div class="thumb" style="height:220px; overflow:hidden; border-radius:14px;">
+            <iframe width="100%" height="220" src="https://www.youtube.com/embed/vP71vc-ZdrI?enablejsapi=1&modestbranding=1&rel=0" frameborder="0" allowfullscreen></iframe>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- WORK pane -->
+    <!-- WORK -->
     <section id="work-pane" class="tab-pane" aria-labelledby="work">
       <div class="center"><h3 class="section-heading">Selected Work</h3><p style="margin-top:10px; max-width:760px; margin-left:auto; margin-right:auto">Case studies showing our creative + growth approach.</p></div>
       <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px; margin-top:24px">
-        <div class="stat-card"><img src="https://via.placeholder.com/600x360?text=Case+1" alt=""><div style="font-weight:700; margin-top:10px">Brand Film — Sunrise Coffee</div><p style="color:var(--muted); margin-top:8px">Cinematic film that increased recall by 40%.</p></div>
-        <div class="stat-card"><img src="https://via.placeholder.com/600x360?text=Case+2" alt=""><div style="font-weight:700; margin-top:10px">Reels Campaign — Urban Shoes</div><p style="color:var(--muted); margin-top:8px">Short-form strategy that scaled reach.</p></div>
-        <div class="stat-card"><img src="https://via.placeholder.com/600x360?text=Case+3" alt=""><div style="font-weight:700; margin-top:10px">Campaign — Healthy Bites</div><p style="color:var(--muted); margin-top:8px">Integrated campaign focused on conversions.</p></div>
+        <div class="stat-card"><img src="https://via.placeholder.com/600x360?text=Case+1" alt=""><div style="font-weight:700; margin-top:10px">Brand Film — Sunrise Coffee</div><p class="mini" style="margin-top:8px">Cinematic film that increased recall by 40%.</p></div>
+        <div class="stat-card"><img src="https://via.placeholder.com/600x360?text=Case+2" alt=""><div style="font-weight:700; margin-top:10px">Reels Campaign — Urban Shoes</div><p class="mini" style="margin-top:8px">Short-form strategy that scaled reach.</p></div>
+        <div class="stat-card"><img src="https://via.placeholder.com/600x360?text=Case+3" alt=""><div style="font-weight:700; margin-top:10px">Campaign — Healthy Bites</div><p class="mini" style="margin-top:8px">Integrated campaign focused on conversions.</p></div>
       </div>
     </section>
 
-    <!-- ABOUT pane: full content only here -->
+    <!-- ABOUT -->
     <section id="about-pane" class="tab-pane" role="region" aria-labelledby="about-hero-title">
       <div class="about-hero">
         <div>
@@ -282,130 +307,149 @@
         </aside>
       </div>
 
-      <div class="row" style="display:grid;grid-template-columns:1fr 320px;gap:20px;margin-top:24px">
+      <div style="display:grid;grid-template-columns:1fr 320px;gap:20px;margin-top:24px">
         <div>
           <h2>Our Journey</h2>
-          <div class="timeline">
-            <div style="margin-bottom:14px"><h4>Roots in Storytelling</h4><p style="color:var(--muted)">We began in the trenches of independent filmmaking — honing our craft on short films and documentaries. These early days instilled a love for authentic narrative and efficient production.</p></div>
-            <div style="margin-bottom:14px"><h4>Blending Art & Impact</h4><p style="color:var(--muted)">We combined festival-grade craft with distribution-first thinking so beautiful films also perform in feeds and funnels.</p></div>
-            <div style="margin-bottom:14px"><h4>Scaling for Growth</h4><p style="color:var(--muted)">We partner with startups and brands to craft cinematic campaigns that captivate audiences and accelerate business objectives.</p></div>
-          </div>
+          <div style="margin-bottom:14px"><h4>Roots in Storytelling</h4><p class="mini">We began in the trenches of independent filmmaking — honing our craft on short films and documentaries.</p></div>
+          <div style="margin-bottom:14px"><h4>Blending Art & Impact</h4><p class="mini">We combined festival-grade craft with distribution-first thinking so beautiful films also perform in feeds and funnels.</p></div>
+          <div style="margin-bottom:14px"><h4>Scaling for Growth</h4><p class="mini">We partner with startups and brands to craft cinematic campaigns that captivate audiences and accelerate business objectives.</p></div>
         </div>
 
         <aside>
-          <div style="background:#fff;padding:18px;border-radius:12px;box-shadow:0 8px 18px rgba(20,20,30,0.04);margin-bottom:12px">
+          <div style="background:var(--card-bg);padding:18px;border-radius:12px;box-shadow:0 8px 18px rgba(20,20,30,0.04);margin-bottom:12px">
             <h3>Our Guiding Mission</h3>
-            <p style="color:var(--muted)">We empower brands with emotionally intelligent narratives that move people and markets. Through insight-driven strategy, film-first craft and data-led distribution we make ideas that are both memorable and measurable.</p>
+            <p class="mini">We empower brands with emotionally intelligent narratives that move people and markets. Through insight-driven strategy, film-first craft and data-led distribution we make ideas that are both memorable and measurable.</p>
           </div>
 
-          <div style="background:#fff;padding:18px;border-radius:12px;box-shadow:0 8px 18px rgba(20,20,30,0.04)">
+          <div style="background:var(--card-bg);padding:18px;border-radius:12px;box-shadow:0 8px 18px rgba(20,20,30,0.04)">
             <h3>Our Future Vision</h3>
-            <p style="color:var(--muted)">To be the creative partner brands rely on for storytelling that shapes culture and drives sustainable growth — blending film-grade craft with platform intelligence across India and beyond.</p>
+            <p class="mini">To be the creative partner brands rely on for storytelling that shapes culture and drives sustainable growth — blending film-grade craft with platform intelligence across India and beyond.</p>
           </div>
         </aside>
       </div>
 
-      <section class="founder" style="display:flex;gap:18px;align-items:center;margin-top:18px;background:#fff;padding:18px;border-radius:12px;box-shadow:0 8px 18px rgba(20,20,30,0.04)">
-        <img class="founder-photo" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop" alt="Founder — Ram Sardhar" style="width:120px;height:120px;object-fit:cover;border-radius:8px">
+      <section style="display:flex;gap:18px;align-items:center;margin-top:18px;background:var(--card-bg);padding:18px;border-radius:12px;box-shadow:0 8px 18px rgba(20,20,30,0.04)">
+        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop" alt="Founder" style="width:120px;height:120px;object-fit:cover;border-radius:8px">
         <div>
-          <blockquote style="margin:0 0 8px">"Marketing today isn’t about pushing features — it’s about shaping human moments. At Dimlight we don’t chase virality; we craft experiences that stick. We combine film-first craft with platform intelligence so your story is felt, shared and remembered."</blockquote>
+          <blockquote style="margin:0 0 8px">"Marketing today isn’t about pushing features — it’s about shaping human moments. At Dimlight we don’t chase virality; we craft experiences that stick."</blockquote>
           <div style="font-weight:700;margin-top:8px">— Ram Sardhar, Founder &amp; Creative Director</div>
         </div>
       </section>
 
-      <div class="split card" style="display:flex;gap:14px;align-items:center;margin-top:18px">
-        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1400&auto=format&fit=crop" alt="Team Dimlight" style="width:48%;border-radius:10px;object-fit:cover">
-        <div style="flex:1;background:#fff;padding:18px;border-radius:12px;box-shadow:0 8px 18px rgba(20,20,30,0.04)">
+      <div style="display:flex;gap:14px;align-items:center;margin-top:18px">
+        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1400&auto=format&fit=crop" alt="Team" style="width:48%;border-radius:10px;object-fit:cover">
+        <div style="flex:1;background:var(--card-bg);padding:18px;border-radius:12px;box-shadow:0 8px 18px rgba(20,20,30,0.04)">
           <h3>Meet Team Dimlight</h3>
-          <p style="color:var(--muted)">A focused collective of filmmakers, editors, strategists and motion designers — small by design, expert by practice. We collaborate closely, iterate quickly, and treat every brief as a craft challenge.</p>
+          <p class="mini">A focused collective of filmmakers, editors, strategists and motion designers — small by design, expert by practice.</p>
         </div>
       </div>
 
-      <div class="culture card" style="display:grid;grid-template-columns:1fr 360px;gap:12px;margin-top:18px">
-        <div style="background:#fff;padding:18px;border-radius:12px;box-shadow:0 8px 18px rgba(20,20,30,0.04)">
+      <div style="display:grid;grid-template-columns:1fr 360px;gap:12px;margin-top:18px">
+        <div style="background:var(--card-bg);padding:18px;border-radius:12px;box-shadow:0 8px 18px rgba(20,20,30,0.04)">
           <h3>Our Culture & Commitment</h3>
-          <p style="color:var(--muted)">Curiosity drives our craft — we value relentless learning, creative accountability, and thoughtful risks. Our process is collaborative and transparent: research, idea, craft, test, iterate, scale — ensuring every piece of work earns attention and delivers results.</p>
+          <p class="mini">Curiosity drives our craft — we value relentless learning, creative accountability, and thoughtful risks. Our process is collaborative and transparent: research, idea, craft, test, iterate, scale.</p>
         </div>
         <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=1400&auto=format&fit=crop" alt="Creative team at work" style="width:100%;height:100%;object-fit:cover;border-radius:12px">
       </div>
 
-      <section class="final" style="margin-top:18px;background:#fff;padding:18px;border-radius:12px;box-shadow:0 8px 18px rgba(20,20,30,0.04)">
+      <section style="margin-top:18px;background:var(--card-bg);padding:18px;border-radius:12px;box-shadow:0 8px 18px rgba(20,20,30,0.04)">
         <h2>Ready to craft your brand’s <span style="color:var(--accent);font-weight:800">unforgettable story?</span></h2>
         <p>If creativity and measurable impact matter to you, let’s create something extraordinary together. Share your vision and we’ll transform it into a story that inspires, connects, and lasts.</p>
-        <a class="btn" href="/contact" style="display:inline-block;margin-top:12px;padding:10px 14px;background:var(--accent);color:#fff;border-radius:8px;text-decoration:none">Start Your Project</a>
+        <a class="btn" href="#" data-action="open-contact">Start Your Project</a>
       </section>
     </section>
 
-    <!-- CONTACT pane -->
+    <!-- CONTACT (REPLACED: single implementation) -->
     <section id="contact-pane" class="tab-pane" aria-labelledby="contact">
-      <div class="center"><h3 class="section-heading">Get in Touch</h3><p style="margin-top:12px; max-width:760px; margin-left:auto; margin-right:auto">Share a brief and we'll respond with a tailored plan and estimate.</p></div>
+      <!-- Hero -->
+      <section style="padding-top:36px;padding-bottom:8px">
+        <div class="wrap" style="max-width:1100px">
+          <h1 style="margin:0 0 8px">Let’s create something unforgettable</h1>
+          <p class="mini" style="margin:0 0 8px">Tell us about your brand and goals. We’ll reply within 24 hours.</p>
+        </div>
+      </section>
 
-      <div class="grid" style="display:grid;grid-template-columns:1fr 420px;gap:20px;margin-top:16px">
-        <aside class="left">
-          <h1>Let’s craft something unforgettable.</h1>
-          <p>Tell us about your idea — whether it’s a short film, a brand video, a social funnel, or a viral reel. We’ll reply with a creative plan and estimate.</p>
-          <div class="contact-lines" style="margin-top:12px">
-            <div class="contact-item" style="display:flex;gap:12px;align-items:flex-start;margin-bottom:10px"><div class="emoji">📍</div><div class="meta"><div class="title">Hyderabad, India</div><div class="sub" style="color:var(--muted)">Local meetings by appointment</div></div></div>
-            <div class="contact-item" style="display:flex;gap:12px;align-items:flex-start;margin-bottom:10px"><div class="emoji">📞</div><div class="meta"><div class="title">+91 72075 46134</div><div class="sub" style="color:var(--muted)">Call / WhatsApp</div></div></div>
-            <div class="contact-item" style="display:flex;gap:12px;align-items:flex-start"><div class="emoji">✉️</div><div class="meta"><div class="title">hello@dimlight.com</div><div class="sub" style="color:var(--muted)">We usually reply within 24–48 hrs</div></div></div>
-          </div>
-        </aside>
+      <!-- Two-column contact -->
+      <section style="padding-bottom:36px">
+        <div class="wrap" style="max-width:1100px">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+            <!-- Form Card -->
+            <div class="card">
+              <h3>Contact Form</h3>
+              <form id="landingContact" action="#" method="post" novalidate>
+                <label style="display:block;margin-top:12px">Name<br>
+                  <input id="cf-name" name="name" required type="text" placeholder="Your name">
+                </label>
 
-        <main class="right">
-          <section class="form-card" style="background:#fff;padding:16px;border-radius:12px;box-shadow:0 8px 18px rgba(20,20,30,0.04)">
-            <h2>Get in touch</h2>
-            <p class="lead" style="color:var(--muted)">Share a brief and we’ll respond with a tailored plan and estimate.</p>
+                <label style="display:block;margin-top:12px">Email<br>
+                  <input id="cf-email" name="email" type="email" required placeholder="name@company.com">
+                </label>
 
-            <form name="contact" method="POST" action="/thank-you.html" data-netlify="true" class="contact-form">
-              <input type="hidden" name="form-name" value="contact">
-              <p style="display:none"><label>Don’t fill this out: <input name="_gotcha"></label></p>
+                <label style="display:block;margin-top:12px">Phone<br>
+                  <input id="cf-phone" name="phone" type="tel" placeholder="+91">
+                </label>
 
-              <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px"><input name="name" type="text" placeholder="Your name" required style="padding:10px;border-radius:8px;border:1px solid #e6e9ec"><input name="email" type="email" placeholder="Email address" required style="padding:10px;border-radius:8px;border:1px solid #e6e9ec"></div>
+                <label style="display:block;margin-top:12px">Message<br>
+                  <textarea id="cf-message" name="message" rows="5" required placeholder="Tell us about your project"></textarea>
+                </label>
 
-              <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px"><input name="phone" type="text" placeholder="Phone (optional)" style="padding:10px;border-radius:8px;border:1px solid #e6e9ec"><select name="service" style="padding:10px;border-radius:8px;border:1px solid #e6e9ec"><option value="" selected hidden>Select service</option><option>Video Production</option><option>Marketing Campaign</option><option>Branding</option><option>Reels &amp; Shorts</option><option>Other</option></select></div>
+                <div style="margin-top:14px;display:flex;gap:12px;align-items:center">
+                  <button class="btn" type="submit">Send</button>
+                  <a class="btn secondary" href="https://wa.me/917207546134" target="_blank" rel="noopener">WhatsApp Us</a>
+                </div>
+              </form>
+            </div>
 
-              <div style="margin-top:8px"><textarea name="message" placeholder="Tell us about your project" required style="width:100%;padding:10px;border-radius:8px;border:1px solid #e6e9ec;min-height:120px"></textarea></div>
+            <!-- Details Card -->
+            <div class="card">
+              <h3>Details</h3>
+              <p><b>Email:</b> hello@dimlight.example</p>
+              <p><b>Location:</b> Hyderabad, India</p>
+              <p><b>Socials:</b> Instagram · LinkedIn · YouTube</p>
 
-              <div class="actions" style="display:flex;align-items:center;gap:12px;margin-top:10px"><button type="submit" class="btn-send" style="padding:10px 14px;background:var(--accent);color:#fff;border:none;border-radius:8px;cursor:pointer">Send</button><div class="note" style="color:var(--muted)">We reply within 24–48 hrs</div></div>
-            </form>
-          </section>
+              <p>
+                <b>Phone:</b>
+                <a href="tel:+917207546134" style="color:var(--accent); text-decoration:none; display:inline-flex; align-items:center; gap:8px; margin-left:8px">
+                  +91 72075 46134
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+                    <path d="M3.654 1.328a.678.678 0 0 1 .737-.135l2.522 1.009c.329.132.52.465.457.81l-.516 2.923a.678.678 0 0 1-.588.55c-.53.065-.858.61-.678 1.107a11.72 11.72 0 0 0 5.657 5.657c.497.18 1.042-.148 1.107-.678a.678.678 0 0 1 .55-.588l2.923-.516a.678.678 0 0 1 .81.457l1.009 2.522a.678.678 0 0 1-.135.737l-2.2 2.2c-.272.272-.682.352-1.02.203a15.534 15.534 0 0 1-6.068-3.908A15.534 15.534 0 0 1 1.451 3.348c-.149-.338-.069-.748.203-1.02l2-2z"/>
+                  </svg>
+                </a>
+              </p>
 
-          <section class="map-card" style="margin-top:12px">
+             <section class="map-card" style="margin-top:12px">
             <iframe title="Dimlight location - Hyderabad" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3805.2202910218555!2d78.40199021485886!3d17.385044988169677!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb9735d6b9f0bd%3A0x4e7b1c2b6b0e0f2!2sHyderabad%2C%20Telangana%2C%20India!5e0!3m2!1sen!2sus!4v1695310000000" style="width:100%;height:220px;border:0;border-radius:10px"></iframe>
           </section>
-        </main>
-      </div>
-
+            </div>
+          </div>
+        </div>
+      </section>
     </section>
 
   </main>
 
   <footer>
-    <div class="wrap center" style="text-align:center">
+    <div class="wrap">
       <div style="font-weight:800">Dimlight</div>
       <div style="margin-top:8px;color:var(--muted)">© <span id="year"></span> Dimlight. All rights reserved.</div>
       <nav style="margin-top:12px">
         <a href="#" onclick="switchTo('home'); return false">Home</a> ·
         <a href="#" onclick="switchTo('services'); return false">Services</a> ·
-        <a href="#" onclick="switchTo('work'); return false">Work</a> ·
         <a href="#" onclick="switchTo('portfolio'); return false">Portfolio</a> ·
         <a href="#" onclick="switchTo('about'); return false">About</a> ·
         <a href="#" onclick="switchTo('contact'); return false">Contact</a>
       </nav>
 
-      <div style="margin-top:10px">
-        <a href="#" style="margin-right:10px">Instagram</a>
-        <a href="#" style="margin-right:10px">LinkedIn</a>
-        <a href="#">YouTube</a>
-      </div>
+      <div class="socials"><a class="badge" href="https://www.instagram.com/dimlightdigitals/">Instagram</a><a class="badge" href="#">LinkedIn</a><a class="badge" href="https://www.youtube.com/@dimlight_creations">YouTube</a><a class="badge" href="https://api.whatsapp.com/send/?phone=7207546134&text&type=phone_number&app_absent=0">WhatsApp</a></div>
+
     </div>
   </footer>
 
   <script>
-    // set year
+    // Set year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // tabs
+    // Tabs
     const tabButtons = document.querySelectorAll('.tab-btn');
     const panes = {
       home: document.getElementById('home-pane'),
@@ -418,27 +462,66 @@
 
     function activateTab(name){
       tabButtons.forEach(b => b.classList.toggle('active', b.dataset.tab === name));
-      Object.keys(panes).forEach(k => { if (!panes[k]) return; panes[k].classList.toggle('active', k === name); });
+      Object.keys(panes).forEach(k => {
+        if(!panes[k]) return;
+        panes[k].classList.toggle('active', k === name);
+      });
       window.scrollTo({top:0, behavior:'smooth'});
     }
 
     tabButtons.forEach(btn => btn.addEventListener('click', () => activateTab(btn.dataset.tab)));
     function switchTo(tabName){ activateTab(tabName); }
+
+    // CTA triggers
     document.querySelectorAll('[data-action="open-contact"]').forEach(el => el.addEventListener('click', () => activateTab('contact')));
     document.querySelectorAll('[data-action="open-services"]').forEach(el => el.addEventListener('click', () => activateTab('services')));
 
-    // marquee pause on hover
+    // Marquee pause on hover
     const marqueeWrap = document.getElementById('marqueeWrap');
     const marqueeTrack = document.getElementById('marqueeTrack');
-    if(marqueeWrap && marqueeTrack){ marqueeWrap.addEventListener('mouseenter', () => marqueeTrack.style.animationPlayState = 'paused'); marqueeWrap.addEventListener('mouseleave', () => marqueeTrack.style.animationPlayState = 'running'); }
+    if(marqueeWrap && marqueeTrack){
+      marqueeWrap.addEventListener('mouseenter', () => marqueeTrack.style.animationPlayState = 'paused');
+      marqueeWrap.addEventListener('mouseleave', () => marqueeTrack.style.animationPlayState = 'running');
+    }
 
-    // contactForm demo (if exists)
-    const demoForm = document.querySelector('.contact-form');
-    if(demoForm){ demoForm.addEventListener('submit', (e) => {
-      // allow actual netlify submission if action present; this prevents local demo.
-    }); }
+    // Contact form handling: validate + alert + reset
+    (function(){
+      const form = document.getElementById('landingContact');
+      if(!form) return;
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        const name = document.getElementById('cf-name').value.trim();
+        const email = document.getElementById('cf-email').value.trim();
+        const message = document.getElementById('cf-message').value.trim();
+        // basic validation
+        if(!name){
+          alert('Please enter your name.');
+          document.getElementById('cf-name').focus();
+          return;
+        }
+        if(!email){
+          alert('Please enter your email.');
+          document.getElementById('cf-email').focus();
+          return;
+        }
+        // Use browser email pattern validation as well (type=email)
+        if(!message){
+          alert('Please tell us about your project.');
+          document.getElementById('cf-message').focus();
+          return;
+        }
 
-    // init
+        // success behavior (you can hook an actual endpoint here)
+        alert('Thanks! We will get back to you shortly.');
+        form.reset();
+
+        // optional tracking hook
+        if(window.dataLayer) dataLayer.push({event:'contact_form_submitted', name: name});
+        // redirect or UI change could be added here
+      });
+    })();
+
+    // Init: show home
     activateTab('home');
   </script>
 </body>
