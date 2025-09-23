@@ -30,6 +30,7 @@
       font-size:16px;
       letter-spacing:0.01em;
     }
+
     /* Headings — improved visibility & professional look */
     h1,h2,h3,h4,h5,h6{
       font-family: 'Playfair Display', serif;
@@ -108,7 +109,6 @@
 
     .marquee{overflow:hidden;border-radius:12px}
     .marquee-track{display:flex;gap:28px;align-items:center}
-    @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
     .portfolio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
 
@@ -136,6 +136,7 @@
     p, li { max-width:var(--measure); }
     .stat-card strong{font-size:20px; display:block}
 
+    /* Responsive tweaks */
     @media (max-width:980px){
       .hero-grid{grid-template-columns:1fr}
       .about-hero{grid-template-columns:1fr;padding:18px}
@@ -182,6 +183,9 @@
 
     /* small polish */
     a.badge{color:var(--muted);text-decoration:none}
+
+    /* marquee animation */
+    @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
   </style>
 </head>
 
@@ -214,7 +218,7 @@
       <div class="hero-grid">
         <div>
           <div class="hero">
-            <h2 class="heading-highlight">Not an agency. A creative <span style="color:#000">partner who makes your brand </span> stand out, scale up, and stay <span class="emph">remembered.</span></h2>
+            <h2 class="heading-highlight">We help <span style="color:#000">good businesses</span> become <span class="emph">GREAT.</span></h2>
             <p>Creative films, thumb-stopping reels, and campaigns built to grow revenue. We focus on measurable growth — views, leads and sales.</p>
           </div>
 
@@ -256,13 +260,13 @@
         </div>
       </div>
 
-      <section style="padding-top:36px;padding-bottom:36px">
+      <section style="padding-top:26px;padding-bottom:26px">
         <div class="center">
           <h3 class="section-heading heading-highlight">Why Brands Choose Dimlight ✨</h3>
           <p style="margin-top:12px; max-width:760px; margin-left:auto; margin-right:auto">From fast-moving startups to established companies, we combine director-led creativity with performance marketing to produce content that looks cinematic and converts.</p>
         </div>
 
-        <div style="margin-top:28px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
+        <div style="margin-top:28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px">
           <div class="stat-card"><strong>30+</strong><div style="margin-top:8px;font-weight:700">Award-Winning Short Films</div><p class="mini" style="margin-top:8px">Festival wins & curated storytelling.</p></div>
           <div class="stat-card"><strong>100+</strong><div style="margin-top:8px;font-weight:700">Corporate Videos</div><p class="mini" style="margin-top:8px">Polished, on-brand video for internal & external comms.</p></div>
           <div class="stat-card"><strong>Global</strong><div style="margin-top:8px;font-weight:700">Clients & Recognition</div><p class="mini" style="margin-top:8px">Work trusted across markets & festivals.</p></div>
@@ -270,7 +274,7 @@
         </div>
       </section>
 
-      <section class="center" style="padding-top:24px;padding-bottom:24px">
+      <section class="center" style="padding-top:18px;padding-bottom:18px">
         <h3 class="section-heading heading-highlight">About Dimlight</h3>
         <p style="margin-top:12px; max-width:780px; margin-left:auto; margin-right:auto">Founded by <strong>Ram Sardhar</strong> in Hyderabad, Dimlight is a creative studio combining cinematic storytelling with digital growth expertise. From short films to branded campaigns, our focus is always on emotion, craft and measurable impact.</p>
       </section>
@@ -299,25 +303,10 @@
           <p style="margin-top:12px; max-width:720px; margin-left:auto; margin-right:auto">Our work has been recognised with industry awards that highlight creativity, storytelling and impact.</p>
         </div>
 
-        <!-- Updated awards grid: Award 1 uses your processed image (curved + curved border) -->
         <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:18px; margin-top:20px">
-          <!-- Award 1: REPLACED with processed image (local file: images/curved_whiteborder_curved.png) -->
-          <div class="stat-card">
-            <!-- wrapper gives the white curved border that follows image corners -->
-            <div style="border-radius:18px; background:#fff; padding:12px; display:block; box-shadow:0 10px 28px rgba(0,0,0,0.06);">
-              <img
-                src="https://i.ibb.co/TM96vLb/curved-whiteborder-curved.png"
-                alt="Best Short Film 2023"
-                loading="lazy"
-                style="display:block; width:100%; height:auto; border-radius:12px; object-fit:cover;">
-            </div>
-
-            <div style="margin-top:10px;font-weight:700">Best Short Film 2023</div>
-            <p class="mini" style="margin-top:6px">Honoured at National Film Festival for storytelling excellence.</p>
-          </div>
-
-          <div class="stat-card"><img src="https://via.placeholder.com/600x360?text=Case+2" alt="" style="width:100%;border-radius:8px"><div style="font-weight:700; margin-top:10px">Creative Excellence 2022</div><p class="mini" style="margin-top:6px">Recognised for innovation in branded campaigns.</p></div>
-          <div class="stat-card"><img src="https://via.placeholder.com/600x360?text=Case+3" alt="" style="width:100%;border-radius:8px"><div style="font-weight:700; margin-top:10px">Emerging Filmmaker</div><p class="mini" style="margin-top:6px">Celebrated for creative direction and impact.</p></div>
+          <div class="stat-card"><img src="https://ibb.co/TM96vLbP" alt="Award 1" style="width:100%;border-radius:8px"><div style="margin-top:10px;font-weight:700">Best Short Film 2023</div><p class="mini" style="margin-top:6px">Honoured at National Film Festival for storytelling excellence.</p></div>
+          <div class="stat-card"><img src="https://via.placeholder.com/600x360?text=Case+2" alt="Award 2" style="width:100%;border-radius:8px"><div style="font-weight:700; margin-top:10px">Creative Excellence 2022</div><p class="mini" style="margin-top:6px">Recognised for innovation in branded campaigns.</p></div>
+          <div class="stat-card"><img src="https://via.placeholder.com/600x360?text=Case+3" alt="Award 3" style="width:100%;border-radius:8px"><div style="font-weight:700; margin-top:10px">Emerging Filmmaker</div><p class="mini" style="margin-top:6px">Celebrated for creative direction and impact.</p></div>
         </div>
       </section>
 
@@ -339,42 +328,43 @@
         <div style="max-width:900px; margin:20px auto; display:grid; gap:12px">
           <details>
             <summary>
-              How long does a project take?
+              How will digital marketing bring me real customers, not just followers?
               <svg class="chev" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <path d="M6 9l6 6 6-6" stroke="#0b1116" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </summary>
-            <div>Short reels: 3–7 days. Corporate films: 2–4 weeks depending on scope.</div>
+            <div> We design campaigns that target people already looking for your services, so you don’t just get likes — you get paying customers..</div>
           </details>
 
           <details>
             <summary>
-              Do you publish on socials?
+              How do I know if you’re the right agency for me?
               <svg class="chev" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <path d="M6 9l6 6 6-6" stroke="#0b1116" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </summary>
-            <div>Yes — we deliver platform-ready assets or publish & optimise for you.</div>
+            <div> If you want a partner who focuses on your growth, not just clicks, then we’re the right fit. We treat your business like our own.</div>
           </details>
 
           <details>
             <summary>
-              What's the typical budget?
+             How fast can I start seeing results?
               <svg class="chev" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <path d="M6 9l6 6 6-6" stroke="#0b1116" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </summary>
-            <div>Starter reels begin at ₹15,000; full campaigns are quoted custom.</div>
+            <div> Paid ads can deliver leads within days, while SEO and branding build steady long-term growth. You get both short-term and long-term wins.</div>
           </details>
 
           <details>
             <summary>
-              Do you offer revisions?
+              What if I spend money and don’t see results?
               <svg class="chev" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <path d="M6 9l6 6 6-6" stroke="#0b1116" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </summary>
-            <div>Yes — every package includes revision cycles for client feedback.</div>
+            <div>Every rupee is tracked. You’ll see reports showing exactly how much you spent and how much business it brought back.
+</div>
           </details>
         </div>
       </section>
@@ -387,7 +377,7 @@
         <p style="margin-top:10px; max-width:760px; margin-left:auto; margin-right:auto">Full-stack creative & distribution services tailored to your growth goals.</p>
       </div>
 
-      <div style="margin-top:28px; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px">
+      <div style="margin-top:18px; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px">
         <div class="feature-card"><img src="https://cdn-icons-png.flaticon.com/512/3209/3209887.png" width="48" alt=""><div style="font-weight:700; margin-top:10px">AI-Powered Digital Marketing Strategy</div><p class="mini" style="margin-top:8px">Unlock the full potential of your business with our AI-driven digital marketing strategies.</p></div>
         <div class="feature-card"><img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" width="48" alt=""><div style="font-weight:700; margin-top:10px">Search Engine Optimization (SEO)</div><p class="mini" style="margin-top:8px">Boost your online visibility and organic traffic with AI-enhanced SEO solutions.</p></div>
         <div class="feature-card"><img src="https://cdn-icons-png.flaticon.com/512/2920/2920277.png" width="48" alt=""><div style="font-weight:700; margin-top:10px">Content Marketing & Corporate Storytelling</div><p class="mini" style="margin-top:8px">Engage your audience with high-quality, search-optimized content that builds brand authority.</p></div>
@@ -506,31 +496,26 @@
       </section>
     </section>
 
-    <!-- CONTACT (REPLACED: FormSubmit integration) -->
+    <!-- CONTACT -->
     <section id="contact-pane" class="tab-pane" aria-labelledby="contact">
-      <!-- Hero -->
-      <section style="padding-top:36px;padding-bottom:8px">
-        <div class="wrap" style="max-width:1100px">
-          <h1 style="margin:0 0 8px">Let’s create something unforgettable</h1>
+      <section style="padding-top:28px;padding-bottom:8px">
+        <div style="max-width:1100px;margin:0 auto;padding:0 12px">
+          <h1 class="heading-highlight" style="margin:0 0 8px">Let’s create something unforgettable</h1>
           <p class="mini" style="margin:0 0 8px">Tell us about your brand and goals. We’ll reply within 24 hours.</p>
         </div>
       </section>
 
-      <!-- Two-column contact -->
       <section style="padding-bottom:36px">
-        <div class="wrap" style="max-width:1100px">
+        <div style="max-width:1100px;margin:0 auto;padding:0 12px">
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
-            <!-- Form Card (updated to post to FormSubmit) -->
             <div class="card">
-              <h3 style="font-size:20px">Contact Form</h3>
+              <h3 style="font-size:18px;margin-bottom:6px" class="heading-subtle">Contact Form</h3>
 
               <form id="landingContact"
                     action="https://formsubmit.co/pravalikathummarapelli@gmail.com"
                     method="POST" novalidate>
 
-                <!-- optional hidden fields for FormSubmit behavior -->
                 <input type="hidden" name="_subject" value="New contact from Dimlight website">
-                <!-- change _next to a thank-you page if you have one; keep as '/' or remove to stay on same page -->
                 <input type="hidden" name="_next" value="/thank-you.html">
                 <input type="hidden" name="_captcha" value="false">
                 <input type="hidden" name="_template" value="table">
@@ -551,33 +536,24 @@
                   <textarea id="cf-message" name="message" rows="5" required placeholder="Tell us about your project"></textarea>
                 </label>
 
-                <div style="margin-top:14px;display:flex;gap:12px;align-items:center">
+                <div style="margin-top:14px;display:flex;gap:12px;align-items:center;flex-wrap:wrap">
                   <button id="cf-submit" class="btn" type="submit">Send</button>
                   <a class="btn secondary" href="https://wa.me/917207546134" target="_blank" rel="noopener">WhatsApp Us</a>
                 </div>
               </form>
             </div>
 
-            <!-- Details Card -->
             <div class="card">
-              <h3 style="font-size:20px">Details</h3>
+              <h3 style="font-size:18px;margin-bottom:6px" class="heading-subtle">Details</h3>
               <p><b>Email:</b> hello@dimlight.example</p>
               <p><b>Location:</b> Hyderabad, India</p>
               <p><b>Socials:</b> Instagram · LinkedIn · YouTube</p>
 
-              <p>
-                <b>Phone:</b>
-                <a href="tel:+917207546134" style="color:var(--accent); text-decoration:none; display:inline-flex; align-items:center; gap:8px; margin-left:8px">
-                  +91 72075 46134
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
-                    <path d="M3.654 1.328a.678.678 0 0 1 .737-.135l2.522 1.009c.329.132.52.465.457.81l-.516 2.923a.678.678 0 0 1-.588.55c-.53.065-.858.61-.678 1.107a11.72 11.72 0 0 0 5.657 5.657c.497.18 1.042-.148 1.107-.678a.678.678 0 0 1 .55-.588l2.923-.516a.678.678 0 0 1 .81.457l1.009 2.522a.678.678 0 0 1-.135.737l-2.2 2.2c-.272.272-.682.352-1.02.203a15.534 15.534 0 0 1-6.068-3.908A15.534 15.534 0 0 1 1.451 3.348c-.149-.338-.069-.748.203-1.02l2-2z"/>
-                  </svg>
-                </a>
-              </p>
+              <p><b>Phone:</b> <a href="tel:+917207546134" style="color:var(--accent); text-decoration:none;">+91 72075 46134</a></p>
 
-             <section class="map-card" style="margin-top:12px">
-            <iframe title="Dimlight location - Hyderabad" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3805.2202910218555!2d78.40199021485886!3d17.385044988169677!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb9735d6b9f0bd%3A0x4e7b1c2b6b0e0f2!2sHyderabad%2C%20Telangana%2C%20India!5e0!3m2!1sen!2sus!4v1695310000000" style="width:100%;height:220px;border:0;border-radius:12px"></iframe>
-          </section>
+              <section class="map-card" style="margin-top:12px">
+                <iframe title="Dimlight location - Hyderabad" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3805.2202910218555!2d78.40199021485886!3d17.385044988169677!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb9735d6b9f0bd%3A0x4e7b1c2b6b0e0f2!2sHyderabad%2C%20Telangana%2C%20India!5e0!3m2!1sen!2sus!4v1695310000000" loading="lazy"></iframe>
+              </section>
             </div>
           </div>
         </div>
@@ -656,7 +632,6 @@
       if(!form) return;
 
       form.addEventListener('submit', function(e){
-        // collect fields
         const nameEl = form.querySelector('[name="name"]');
         const emailEl = form.querySelector('[name="email"]');
         const messageEl = form.querySelector('[name="message"]');
@@ -666,7 +641,6 @@
         const email = emailEl ? emailEl.value.trim() : '';
         const message = messageEl ? messageEl.value.trim() : '';
 
-        // basic client-side validation: prevent submission if invalid
         if(!name){
           e.preventDefault();
           alert('Please enter your name.');
@@ -686,13 +660,11 @@
           return;
         }
 
-        // disable submit to prevent double-click, allow the native submit to proceed
         if(btn){
           btn.disabled = true;
           btn.textContent = 'Sending…';
         }
-
-        // Note: do NOT call e.preventDefault() here — we intentionally let the browser submit the form.
+        // allow native submit
       });
     })();
 
