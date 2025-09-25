@@ -96,7 +96,7 @@
 
     .feature-card,.stat-card,.card{background:var(--card-bg);padding:18px;border-radius:var(--radius);box-shadow:0 8px 20px rgba(20,20,30,0.04)}
     .feature-card{display:flex;flex-direction:column;gap:10px}
-    .stat-card{text-align:left}
+    .stat-card{text-align:left;display:flex;flex-direction:column}
     .center{text-align:center}
 
     /* ABOUT: improved responsive layout */
@@ -156,6 +156,29 @@
     .team-block img{width:48%;min-width:180px;border-radius:10px;object-fit:cover}
     .team-block .team-card{flex:1;background:var(--card-bg);padding:16px;border-radius:12px;box-shadow:0 8px 18px rgba(20,20,30,0.04)}
 
+    /* Awards-specific styles to ensure uniform image size and aligned content */
+    .awards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 18px;
+      margin-top: 20px;
+      align-items: start;
+    }
+    .awards-grid .stat-card {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-height: 100%;
+    }
+    .award-img {
+      width: 100%;
+      height: 180px;      /* consistent uniform height */
+      object-fit: cover;  /* crop to fill without distortion */
+      border-radius: 8px;
+      display: block;
+      background: #f4f4f4;
+    }
+
     /* Responsive tweaks */
     @media (max-width:980px){
       .hero-grid{grid-template-columns:1fr}
@@ -200,6 +223,7 @@
       .tabs{right:12px;top:64px;width:240px}
       .team-block{gap:12px}
       .wrap{padding:14px}
+      .award-img{height:140px} /* slightly smaller on very small screens */
     }
 
     /* Responsive video wrapper */
@@ -298,7 +322,6 @@
           <div class="stat-card"><strong>30+</strong><div style="margin-top:8px;font-weight:700">Award-Winning Short Films</div><p class="mini" style="margin-top:8px">Festival wins & curated storytelling.</p></div>
           <div class="stat-card"><strong>100+</strong><div style="margin-top:8px;font-weight:700">Corporate Videos</div><p class="mini" style="margin-top:8px">Polished, on-brand video for internal & external comms.</p></div>
           <div class="stat-card"><strong>Global</strong><div style="margin-top:8px;font-weight:700">Clients & Recognition</div><p class="mini" style="margin-top:8px">Work trusted across markets & festivals.</p></div>
-          <!-- Removed the review-specific element per request; replaced with Partners -->
           <div class="stat-card"><strong>Partners</strong><div style="margin-top:8px;font-weight:700">Trusted Partners</div><p class="mini" style="margin-top:8px">Collaborations with agencies and platforms.</p></div>
         </div>
       </section>
@@ -326,16 +349,31 @@
         </div>
       </section>
 
+      <!-- Awards & Recognitions (modified: consistent image sizes and aligned cards) -->
       <section style="padding-top:18px;padding-bottom:18px">
         <div class="center">
           <h3 class="section-heading heading-highlight">Awards & Recognitions 🏆</h3>
           <p style="margin-top:12px; max-width:720px; margin-left:auto; margin-right:auto">Our work has been recognised with industry awards that highlight creativity, storytelling and impact.</p>
         </div>
 
-        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:18px; margin-top:20px">
-          <div class="stat-card"><img src="award_image.png" alt="Award 1" style="width:100%;border-radius:8px"><div style="margin-top:10px;font-weight:700">Emerging Filmmaker 2021</div><p class="mini" style="margin-top:6px">Honoured at ravindhra bharathi for the film Be In The Moment.</p></div>
-           <div class="stat-card"><img src="award2.png" alt="Award 2" style="width:100%;border-radius:8px"><div style="margin-top:10px;font-weight:700">Emerging Filmmaker 2022</div><p class="mini" style="margin-top:6px">outstanding participation in the.</p></div>
-          <div class="stat-card"><img src="award3.png" alt="Award 3" style="width:100%;border-radius:8px"><div style="margin-top:10px;font-weight:700">Best documentary film On TSRTC 2023</div><p class="mini" style="margin-top:6px">Honoured by TSRTC Chairman VC Sajjanar on the occasion of the 75th Independence Day at Ravindra Bharathi.</p></div>
+        <div class="awards-grid">
+          <div class="stat-card">
+            <img src="award_image.png" alt="Award 1" class="award-img">
+            <div style="margin-top:0;font-weight:700">Emerging Filmmaker 2021</div>
+            <p class="mini" style="margin-top:6px">Honoured at Ravindra Bharathi for the film Be In The Moment.</p>
+          </div>
+
+          <div class="stat-card">
+            <img src="award2.png" alt="Award 2" class="award-img">
+            <div style="margin-top:0;font-weight:700">Emerging Filmmaker 2022</div>
+            <p class="mini" style="margin-top:6px">Outstanding participation in the festival.</p>
+          </div>
+
+          <div class="stat-card">
+            <img src="award3.png" alt="Award 3" class="award-img">
+            <div style="margin-top:0;font-weight:700">Best Documentary Film on TSRTC 2023</div>
+            <p class="mini" style="margin-top:6px">Honoured by TSRTC Chairman VC Sajjanar on the occasion of the 75th Independence Day at Ravindra Bharathi.</p>
+          </div>
         </div>
       </section>
 
