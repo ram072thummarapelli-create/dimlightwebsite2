@@ -99,12 +99,24 @@
     .stat-card{text-align:left}
     .center{text-align:center}
 
-    .about-hero{background:var(--card-bg);border-radius:14px;box-shadow:0 12px 36px rgba(20,20,30,0.06);padding:28px;display:grid;grid-template-columns:1fr 360px;gap:20px;align-items:center;margin-top:18px}
+    /* ABOUT: improved responsive layout */
+    .about-hero{
+      background:var(--card-bg);
+      border-radius:14px;
+      box-shadow:0 12px 36px rgba(20,20,30,0.06);
+      padding:28px;
+      display:grid;
+      grid-template-columns: 1fr 360px;
+      gap:20px;
+      align-items:center;
+      margin-top:18px;
+    }
     .about-kicker{color:var(--accent);font-weight:800;letter-spacing:0.06em;margin-bottom:10px;font-size:13px;text-transform:uppercase}
     .about-title{font-weight:800;font-size:34px;line-height:1.02;color:#08101a;margin:0 0 12px}
     .about-lead{color:#5b6970;max-width:var(--measure);font-size:15px;margin-bottom:8px}
 
-    .image-card img{width:100%;height:240px;object-fit:cover;border-radius:12px;display:block}
+    /* make image cards fluid */
+    .image-card img{width:100%;height:auto;object-fit:cover;border-radius:12px;display:block}
     .card-body{padding-top:10px;color:#6a767c;font-size:14px}
 
     .marquee{overflow:hidden;border-radius:12px}
@@ -136,6 +148,14 @@
     p, li { max-width:var(--measure); }
     .stat-card strong{font-size:20px; display:block}
 
+    /* new utility classes used in About to control responsive stacking neatly */
+    .two-col{display:grid;grid-template-columns:1fr 320px;gap:20px}
+    .two-col-reverse{display:grid;grid-template-columns:1fr 360px;gap:12px;align-items:center}
+    .hero-cta-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    .team-block{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+    .team-block img{width:48%;min-width:180px;border-radius:10px;object-fit:cover}
+    .team-block .team-card{flex:1;background:var(--card-bg);padding:16px;border-radius:12px;box-shadow:0 8px 18px rgba(20,20,30,0.04)}
+
     /* Responsive tweaks */
     @media (max-width:980px){
       .hero-grid{grid-template-columns:1fr}
@@ -158,11 +178,17 @@
       .hero-media{order:2}
       .hero{order:1}
       .about-hero{grid-template-columns:1fr}
-      .image-card img{height:200px}
+      .image-card img{height:auto}
 
-      /* Make headings a touch larger for mobile readability */
-      h1.heading-highlight, h2.heading-highlight{font-size:1.1rem}
+      /* Convert two-col grids to single column stacks */
+      .two-col, .two-col-reverse{grid-template-columns:1fr}
+      .team-block img{width:100%}
+      .team-block .team-card{width:100%}
+
+      /* Slightly larger headings on small screens */
+      h1.heading-highlight, h2.heading-highlight{font-size:1.05rem}
       .section-heading.heading-highlight{font-size:18px;padding:6px 10px}
+      blockquote{font-size:0.98rem}
     }
 
     @media (max-width:680px){
@@ -172,6 +198,8 @@
       .hero h2{font-size:26px}
       .about-hero{padding:14px}
       .tabs{right:12px;top:64px;width:240px}
+      .team-block{gap:12px}
+      .wrap{padding:14px}
     }
 
     /* Responsive video wrapper */
@@ -223,7 +251,7 @@
           </div>
 
           <div style="margin-top:18px">
-            <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+            <div class="hero-cta-row">
               <button class="btn" data-action="open-contact">Start a project →</button>
               <button class="btn secondary" data-action="open-services">Explore services</button>
             </div>
@@ -270,7 +298,8 @@
           <div class="stat-card"><strong>30+</strong><div style="margin-top:8px;font-weight:700">Award-Winning Short Films</div><p class="mini" style="margin-top:8px">Festival wins & curated storytelling.</p></div>
           <div class="stat-card"><strong>100+</strong><div style="margin-top:8px;font-weight:700">Corporate Videos</div><p class="mini" style="margin-top:8px">Polished, on-brand video for internal & external comms.</p></div>
           <div class="stat-card"><strong>Global</strong><div style="margin-top:8px;font-weight:700">Clients & Recognition</div><p class="mini" style="margin-top:8px">Work trusted across markets & festivals.</p></div>
-          <div class="stat-card"><strong>High</strong><div style="margin-top:8px;font-weight:700">Google Reviews</div><p class="mini" style="margin-top:8px">Highly rated by clients — see our feedback.</p></div>
+          <!-- Removed the review-specific element per request; replaced with Partners -->
+          <div class="stat-card"><strong>Partners</strong><div style="margin-top:8px;font-weight:700">Trusted Partners</div><p class="mini" style="margin-top:8px">Collaborations with agencies and platforms.</p></div>
         </div>
       </section>
 
@@ -307,8 +336,6 @@
           <div class="stat-card"><img src="award_image.png" alt="Award 1" style="width:100%;border-radius:8px"><div style="margin-top:10px;font-weight:700">Emerging Filmmaker 2021</div><p class="mini" style="margin-top:6px">Honoured at ravindhra bharathi for the film Be In The Moment.</p></div>
            <div class="stat-card"><img src="award2.png" alt="Award 2" style="width:100%;border-radius:8px"><div style="margin-top:10px;font-weight:700">Emerging Filmmaker 2022</div><p class="mini" style="margin-top:6px">outstanding participation in the.</p></div>
           <div class="stat-card"><img src="award3.png" alt="Award 3" style="width:100%;border-radius:8px"><div style="margin-top:10px;font-weight:700">Best documentary film On TSRTC 2023</div><p class="mini" style="margin-top:6px">Honoured by TSRTC Chairman VC Sajjanar on the occasion of the 75th Independence Day at Ravindra Bharathi.</p></div>
-
-
         </div>
       </section>
 
@@ -446,7 +473,8 @@
         </aside>
       </div>
 
-      <div style="display:grid;grid-template-columns:1fr 320px;gap:20px;margin-top:18px">
+      <!-- Journey + mission (two column on desktop, stacked on mobile) -->
+      <div class="two-col" style="margin-top:18px">
         <div>
           <h2 class="heading-subtle" style="font-size:22px;margin-bottom:10px">Our Journey</h2>
           <div style="margin-bottom:14px"><h4 style="font-size:18px;margin-bottom:6px" class="heading-subtle">Roots in Storytelling</h4><p class="mini">We began in the trenches of independent filmmaking — honing our craft on short films and documentaries. These early days instilled a love for authentic narrative and efficient production.</p></div>
@@ -467,7 +495,8 @@
         </aside>
       </div>
 
-      <section style="display:flex;gap:18px;align-items:center;margin-top:18px;background:var(--card-bg);padding:18px;border-radius:12px;box-shadow:0 8px 18px rgba(20,20,30,0.04);flex-wrap:wrap">
+      <!-- Founder block: stacked nicely on mobile -->
+      <section class="two-col-reverse" style="margin-top:18px;background:var(--card-bg);padding:18px;border-radius:12px;box-shadow:0 8px 18px rgba(20,20,30,0.04);flex-wrap:wrap">
         <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop" alt="Founder" style="width:120px;height:120px;object-fit:cover;border-radius:8px">
         <div style="flex:1;min-width:200px">
           <blockquote style="margin:0 0 8px; font-style:italic">"Marketing today isn’t about pushing features — it’s about shaping human moments. At Dimlight we don’t chase virality; we craft experiences that stick. We combine film-first craft with platform intelligence so your story is felt, shared and rememberedss."</blockquote>
@@ -475,15 +504,17 @@
         </div>
       </section>
 
-      <div style="display:flex;gap:14px;align-items:center;margin-top:18px;flex-wrap:wrap">
-        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1400&auto=format&fit=crop" alt="Team" style="width:48%;border-radius:10px;object-fit:cover;min-width:180px">
-        <div style="flex:1;background:var(--card-bg);padding:16px;border-radius:12px;box-shadow:0 8px 18px rgba(20,20,30,0.04)">
+      <!-- Team block: image + card flow responsively -->
+      <div class="team-block" style="margin-top:18px">
+        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1400&auto=format&fit=crop" alt="Team">
+        <div class="team-card">
           <h3 style="font-size:18px">Meet Team Dimlight</h3>
           <p class="mini">A focused collective of filmmakers, editors, strategists and motion designers — small by design, expert by practice.</p>
         </div>
       </div>
 
-      <div style="display:grid;grid-template-columns:1fr 360px;gap:12px;margin-top:18px">
+      <!-- Culture + image -->
+      <div class="two-col" style="margin-top:18px">
         <div style="background:var(--card-bg);padding:16px;border-radius:12px;box-shadow:0 8px 18px rgba(20,20,30,0.04)">
           <h3 style="font-size:18px">Our Culture & Commitment</h3>
           <p class="mini">Curiosity drives our craft — we value relentless learning, creative accountability, and thoughtful risks.</p>
