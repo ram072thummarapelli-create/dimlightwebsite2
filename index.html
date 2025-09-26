@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Dimlight — Creative Studio</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Playfair+Display:wght@500;700;900&display=swap" rel="stylesheet">
+  <!-- Poppins font for body + headings (user requested) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root{
@@ -21,7 +22,7 @@
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
-      font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      font-family: 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
       margin:0;
       background:var(--bg);
       color:#071017;
@@ -31,30 +32,36 @@
       letter-spacing:0.01em;
     }
 
-    /* Headings — improved visibility & professional look */
+    /* Headings — Poppins, more visible & readable */
     h1,h2,h3,h4,h5,h6{
-      font-family: 'Playfair Display', serif;
+      font-family: 'Poppins', 'Segoe UI', Roboto, Arial, sans-serif;
       color:#071017;
       margin:0 0 12px 0;
-      line-height:1.06;
+      line-height:1.08;
       letter-spacing: -0.01em;
       font-weight:700;
       text-rendering:optimizeLegibility;
     }
 
-    /* Highlight utility for headings */
+    /* Headline sizes tuned for clarity */
+    h1{font-size:32px}
+    h2{font-size:28px}
+    h3{font-size:20px}
+    h4{font-size:18px}
+
+    /* Strong highlight utility for headings */
     .heading-highlight{
       display:inline-block;
       padding:8px 14px;
       border-radius:10px;
-      background: linear-gradient(90deg, rgba(242,138,30,0.10), rgba(247,178,116,0.03));
+      background: linear-gradient(90deg, rgba(242,138,30,0.12), rgba(247,178,116,0.03));
       box-shadow: 0 10px 28px rgba(242,138,30,0.06);
-      border-left:4px solid rgba(242,138,30,0.18);
+      border-left:4px solid rgba(242,138,30,0.20);
       color: #08101a;
       font-weight:800;
+      letter-spacing: -0.02em;
     }
 
-    /* Slightly more subtle variant for smaller headings */
     .heading-subtle{
       display:inline-block;padding:6px 10px;border-radius:8px;background:rgba(242,138,30,0.06);font-weight:700;color:#153037;
     }
@@ -70,13 +77,13 @@
     .header-inner{display:flex;align-items:center;justify-content:space-between;gap:12px}
     .brand{display:flex;gap:12px;align-items:center}
 
-    /* .logo is now a link container — keeps original size & look */
+    /* Logo container */
     .logo{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      width:48px;
-      height:48px;
+      width:56px;
+      height:56px;
       border-radius:10px;
       background:linear-gradient(135deg,#111,#333);
       color:#fff;
@@ -85,13 +92,11 @@
       overflow:hidden;
       text-decoration:none;
     }
-
-    /* image inside logo */
     .logo-img{
       display:block;
       width:100%;
       height:100%;
-      object-fit:contain; /* preserve aspect and padding inside box */
+      object-fit:contain;
       object-position:center;
       background:transparent;
     }
@@ -104,14 +109,13 @@
     .tab-btn{background:transparent;border:none;padding:8px 12px;border-radius:10px;cursor:pointer;font-weight:700;color:#253033}
     .tab-btn.active{background:rgba(242,138,30,0.09);color:var(--accent);box-shadow:inset 0 -3px 0 rgba(242,138,30,0.12)}
 
-    /* Mobile menu toggle (default hidden on desktop) */
     .menu-toggle{display:none;background:transparent;border:0;padding:8px;border-radius:8px;cursor:pointer}
 
     main{padding:22px 0}
 
     /* Hero */
     .hero-grid{display:grid;grid-template-columns:1fr 440px;gap:34px;align-items:center}
-    .hero h2{font-size:clamp(28px,4vw,42px);margin:0 0 8px 0;font-weight:800}
+    .hero h2{font-size:clamp(28px,4vw,44px);margin:0 0 8px 0;font-weight:800}
     .hero h2 .emph{background:linear-gradient(90deg, rgba(242,138,30,0.12), rgba(242,138,30,0.02));padding:4px 6px;border-radius:6px;color:var(--accent);display:inline-block;font-weight:800}
     .hero p{color:var(--muted);max-width:var(--measure); font-size:clamp(15px,1.6vw,17px)}
 
@@ -125,7 +129,7 @@
     .stat-card{text-align:left}
     .center{text-align:center}
 
-    /* ABOUT: improved responsive layout */
+    /* ABOUT layout */
     .about-hero{
       background:var(--card-bg);
       border-radius:14px;
@@ -141,7 +145,6 @@
     .about-title{font-weight:800;font-size:34px;line-height:1.02;color:#08101a;margin:0 0 12px}
     .about-lead{color:#5b6970;max-width:var(--measure);font-size:15px;margin-bottom:8px}
 
-    /* make image cards fluid */
     .image-card img{width:100%;height:auto;object-fit:cover;border-radius:12px;display:block}
     .card-body{padding-top:10px;color:#6a767c;font-size:14px}
 
@@ -174,13 +177,14 @@
     p, li { max-width:var(--measure); }
     .stat-card strong{font-size:20px; display:block}
 
-    /* new utility classes used in About to control responsive stacking neatly */
-    .two-col{display:grid;grid-template-columns:1fr 320px;gap:20px}
-    .two-col-reverse{display:grid;grid-template-columns:1fr 360px;gap:12px;align-items:center}
-    .hero-cta-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
-    .team-block{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
-    .team-block img{width:48%;min-width:180px;border-radius:10px;object-fit:cover}
-    .team-block .team-card{flex:1;background:var(--card-bg);padding:16px;border-radius:12px;box-shadow:0 8px 18px rgba(20,20,30,0.04)}
+    /* Equal award image sizing */
+    .award-img{
+      width:100%;
+      height:320px;       /* consistent height for awards */
+      object-fit:cover;
+      border-radius:8px;
+      display:block;
+    }
 
     /* Responsive tweaks */
     @media (max-width:980px){
@@ -189,54 +193,26 @@
       .portfolio-grid{grid-template-columns:1fr}
       .wrap{padding:18px}
       main{padding:12px 0}
-
-      /* Make the menu toggle larger and more tappable */
       .menu-toggle{display:inline-flex;align-items:center;justify-content:center;font-size:26px;padding:12px 16px;background:transparent;border-radius:10px}
-
-      /* Mobile nav panel */
       .tabs{display:none;position:absolute;right:18px;top:68px;flex-direction:column;background:var(--card-bg);box-shadow:0 18px 40px rgba(12,16,20,0.08);border-radius:12px;padding:12px;width:260px}
       .tabs.show{display:flex}
-
-      /* Make each menu item larger on mobile for easier tapping */
       .tabs .tab-btn{display:block;width:100%;text-align:left;padding:14px 14px;font-size:16px;border-radius:10px;margin-bottom:6px}
-      .tabs .tab-btn.active{box-shadow:none}
-
       .hero-media{order:2}
       .hero{order:1}
       .about-hero{grid-template-columns:1fr}
       .image-card img{height:auto}
-
-      /* Convert two-col grids to single column stacks */
-      .two-col, .two-col-reverse{grid-template-columns:1fr}
-      .team-block img{width:100%}
-      .team-block .team-card{width:100%}
-
-      /* Slightly larger headings on small screens */
-      h1.heading-highlight, h2.heading-highlight{font-size:1.05rem}
-      .section-heading.heading-highlight{font-size:18px;padding:6px 10px}
-      blockquote{font-size:0.98rem}
+      .award-img{height:220px}
+      h1{font-size:28px}
+      h2{font-size:24px}
     }
 
     @media (max-width:680px){
-      .logo{width:42px;height:42px;font-size:16px}
-      .brand h1{font-size:0.95rem}
+      .logo{width:48px;height:48px}
       .about-title{font-size:26px}
       .hero h2{font-size:26px}
-      .about-hero{padding:14px}
-      .tabs{right:12px;top:64px;width:240px}
-      .team-block{gap:12px}
       .wrap{padding:14px}
+      .award-img{height:180px}
     }
-
-    /* Responsive video wrapper */
-    .video-wrap{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px}
-    .video-wrap iframe, .video-wrap video{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
-
-    /* Responsive map */
-    .map-card iframe{width:100%;height:220px;border:0;border-radius:12px}
-
-    /* small polish */
-    a.badge{color:var(--muted);text-decoration:none}
 
     /* marquee animation */
     @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
@@ -247,9 +223,9 @@
   <header>
     <div class="wrap header-inner">
       <div class="brand" role="banner">
-        <!-- Logo changed to use a PNG file. Place your PNG at assets/logo.png -->
+        <!-- Logo: replace file path as needed -->
         <a class="logo" href="/" aria-label="Dimlight — Home">
-          <img src="logo_converted.png" srcset="assets/logo@2x.png 2x" alt="Dimlight logo" class="logo-img" loading="lazy">
+          <img src="logo_converted.png" alt="Dimlight logo" class="logo-img" loading="lazy">
         </a>
 
         <div>
@@ -362,9 +338,23 @@
         </div>
 
         <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:18px; margin-top:20px">
-          <div class="stat-card"><img src="https://images.unsplash.com/photo-1529101091764-c3526daf38fe?q=80&w=1600&auto=format&fit=crop" alt="Award 1" style="width:100%;height:300px;object-fit:cover;border-radius:8px"><div style="margin-top:10px;font-weight:700">Emerging Filmmaker 2021</div><p class="mini" style="margin-top:6px">Honoured at ravindhra bharathi for the film Be In The Moment.</p></div>
-           <div class="stat-card"><img src="https://images.unsplash.com/photo-1506086679524-9f7b2cd5d0c2?q=80&w=1600&auto=format&fit=crop" alt="Award 2" style="width:100%;height:300px;object-fit:cover;border-radius:8px"><div style="margin-top:10px;font-weight:700">Emerging Filmmaker 2022</div><p class="mini" style="margin-top:6px">outstanding participation in the.</p></div>
-          <div class="stat-card"><img src="https://images.unsplash.com/photo-1515165562835-c0f3b91013fa?q=80&w=1600&auto=format&fit=crop" alt="Award 3" style="width:100%;height:300px;object-fit:cover;border-radius:8px"><div style="margin-top:10px;font-weight:700">Best documentary film On TSRTC 2023</div><p class="mini" style="margin-top:6px">Honoured by TSRTC Chairman VC Sajjanar on the occasion of the 75th Independence Day at Ravindra Bharathi.</p></div>
+          <div class="stat-card">
+            <img src="award1.jpg" alt="Award 1" class="award-img">
+            <div style="margin-top:10px;font-weight:700">Emerging Filmmaker 2021</div>
+            <p class="mini" style="margin-top:6px">Honoured at Ravindra Bharathi for the film Be In The Moment.</p>
+          </div>
+
+          <div class="stat-card">
+            <img src="award2.jpg" alt="Award 2" class="award-img">
+            <div style="margin-top:10px;font-weight:700">Emerging Filmmaker 2022</div>
+            <p class="mini" style="margin-top:6px">Outstanding participation in the regional festival circuit.</p>
+          </div>
+
+          <div class="stat-card">
+            <img src="award3.jpg" alt="Award 3" class="award-img">
+            <div style="margin-top:10px;font-weight:700">Best documentary film On TSRTC 2023</div>
+            <p class="mini" style="margin-top:6px">Honoured by TSRTC Chairman VC Sajjanar on the occasion of the 75th Independence Day at Ravindra Bharathi.</p>
+          </div>
         </div>
       </section>
 
