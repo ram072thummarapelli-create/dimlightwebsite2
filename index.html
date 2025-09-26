@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Dimlight — Creative Studio</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Playfair+Display:wght@500;700;900&display=swap" rel="stylesheet">
+  <!-- Poppins font for body + headings (requested) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root{
@@ -21,7 +22,8 @@
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
-      font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      /* switched to Poppins */
+      font-family: 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
       margin:0;
       background:var(--bg);
       color:#071017;
@@ -31,18 +33,26 @@
       letter-spacing:0.01em;
     }
 
-    /* Headings — improved visibility & professional look */
+    /* Headings — now use Poppins and tuned for clarity/readability */
     h1,h2,h3,h4,h5,h6{
-      font-family: 'Playfair Display', serif;
+      font-family: 'Poppins', "Playfair Display", serif; /* Poppins primary, Playfair as fallback if desired */
       color:#071017;
       margin:0 0 12px 0;
-      line-height:1.06;
+      line-height:1.12;                  /* slightly more relaxed than before for readability */
       letter-spacing: -0.01em;
-      font-weight:700;
+      font-weight:700;                   /* heavier for better contrast */
       text-rendering:optimizeLegibility;
+      -webkit-font-smoothing:antialiased;
     }
 
-    /* Highlight utility for headings */
+    /* Increase visual weight & spacing for main headings */
+    h1{ font-size:clamp(26px,4.6vw,44px); line-height:1.02; font-weight:800; letter-spacing:-0.02em; }
+    h2{ font-size:clamp(20px,3.4vw,36px); line-height:1.08; font-weight:800; letter-spacing:-0.015em; }
+    h3{ font-size:18px; font-weight:700; }
+    h4{ font-size:16px; font-weight:700; }
+    h5,h6{ font-size:14px; font-weight:600; }
+
+    /* Highlight utility for headings — preserved but uses Poppins look */
     .heading-highlight{
       display:inline-block;
       padding:8px 14px;
@@ -52,9 +62,10 @@
       border-left:4px solid rgba(242,138,30,0.18);
       color: #08101a;
       font-weight:800;
+      /* slightly larger text so headings pop */
+      font-size:1.02rem;
     }
 
-    /* Slightly more subtle variant for smaller headings */
     .heading-subtle{
       display:inline-block;padding:6px 10px;border-radius:8px;background:rgba(242,138,30,0.06);font-weight:700;color:#153037;
     }
@@ -78,7 +89,6 @@
     .tab-btn{background:transparent;border:none;padding:8px 12px;border-radius:10px;cursor:pointer;font-weight:700;color:#253033}
     .tab-btn.active{background:rgba(242,138,30,0.09);color:var(--accent);box-shadow:inset 0 -3px 0 rgba(242,138,30,0.12)}
 
-    /* Mobile menu toggle (default hidden on desktop) */
     .menu-toggle{display:none;background:transparent;border:0;padding:8px;border-radius:8px;cursor:pointer}
 
     main{padding:22px 0}
@@ -115,7 +125,6 @@
     .about-title{font-weight:800;font-size:34px;line-height:1.02;color:#08101a;margin:0 0 12px}
     .about-lead{color:#5b6970;max-width:var(--measure);font-size:15px;margin-bottom:8px}
 
-    /* make image cards fluid */
     .image-card img{width:100%;height:auto;object-fit:cover;border-radius:12px;display:block}
     .card-body{padding-top:10px;color:#6a767c;font-size:14px}
 
@@ -148,7 +157,6 @@
     p, li { max-width:var(--measure); }
     .stat-card strong{font-size:20px; display:block}
 
-    /* new utility classes used in About to control responsive stacking neatly */
     .two-col{display:grid;grid-template-columns:1fr 320px;gap:20px}
     .two-col-reverse{display:grid;grid-template-columns:1fr 360px;gap:12px;align-items:center}
     .hero-cta-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
@@ -156,36 +164,24 @@
     .team-block img{width:48%;min-width:180px;border-radius:10px;object-fit:cover}
     .team-block .team-card{flex:1;background:var(--card-bg);padding:16px;border-radius:12px;box-shadow:0 8px 18px rgba(20,20,30,0.04)}
 
-    /* Responsive tweaks */
     @media (max-width:980px){
       .hero-grid{grid-template-columns:1fr}
       .about-hero{grid-template-columns:1fr;padding:18px}
       .portfolio-grid{grid-template-columns:1fr}
       .wrap{padding:18px}
       main{padding:12px 0}
-
-      /* Make the menu toggle larger and more tappable */
       .menu-toggle{display:inline-flex;align-items:center;justify-content:center;font-size:26px;padding:12px 16px;background:transparent;border-radius:10px}
-
-      /* Mobile nav panel */
       .tabs{display:none;position:absolute;right:18px;top:68px;flex-direction:column;background:var(--card-bg);box-shadow:0 18px 40px rgba(12,16,20,0.08);border-radius:12px;padding:12px;width:260px}
       .tabs.show{display:flex}
-
-      /* Make each menu item larger on mobile for easier tapping */
       .tabs .tab-btn{display:block;width:100%;text-align:left;padding:14px 14px;font-size:16px;border-radius:10px;margin-bottom:6px}
       .tabs .tab-btn.active{box-shadow:none}
-
       .hero-media{order:2}
       .hero{order:1}
       .about-hero{grid-template-columns:1fr}
       .image-card img{height:auto}
-
-      /* Convert two-col grids to single column stacks */
       .two-col, .two-col-reverse{grid-template-columns:1fr}
       .team-block img{width:100%}
       .team-block .team-card{width:100%}
-
-      /* Slightly larger headings on small screens */
       h1.heading-highlight, h2.heading-highlight{font-size:1.05rem}
       .section-heading.heading-highlight{font-size:18px;padding:6px 10px}
       blockquote{font-size:0.98rem}
@@ -202,17 +198,11 @@
       .wrap{padding:14px}
     }
 
-    /* Responsive video wrapper */
     .video-wrap{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px}
     .video-wrap iframe, .video-wrap video{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
 
-    /* Responsive map */
     .map-card iframe{width:100%;height:220px;border:0;border-radius:12px}
-
-    /* small polish */
     a.badge{color:var(--muted);text-decoration:none}
-
-    /* marquee animation */
     @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
   </style>
 </head>
@@ -298,7 +288,6 @@
           <div class="stat-card"><strong>30+</strong><div style="margin-top:8px;font-weight:700">Award-Winning Short Films</div><p class="mini" style="margin-top:8px">Festival wins & curated storytelling.</p></div>
           <div class="stat-card"><strong>100+</strong><div style="margin-top:8px;font-weight:700">Corporate Videos</div><p class="mini" style="margin-top:8px">Polished, on-brand video for internal & external comms.</p></div>
           <div class="stat-card"><strong>Global</strong><div style="margin-top:8px;font-weight:700">Clients & Recognition</div><p class="mini" style="margin-top:8px">Work trusted across markets & festivals.</p></div>
-          <!-- Removed the review-specific element per request; replaced with Partners -->
           <div class="stat-card"><strong>Partners</strong><div style="margin-top:8px;font-weight:700">Trusted Partners</div><p class="mini" style="margin-top:8px">Collaborations with agencies and platforms.</p></div>
         </div>
       </section>
@@ -659,7 +648,7 @@
       marqueeWrap.addEventListener('mouseleave', () => marqueeTrack.style.animationPlayState = 'running');
     }
 
-    // Contact form handling: validate, disable submit, then allow native POST to FormSubmit
+    // Contact form handling
     (function(){
       const form = document.getElementById('landingContact');
       if(!form) return;
@@ -713,7 +702,6 @@
         nav.classList.toggle('show');
       });
 
-      // close nav when clicking outside on small screens
       document.addEventListener('click', function(e){
         if(window.innerWidth > 980) return;
         if(!nav.contains(e.target) && !toggle.contains(e.target)){
