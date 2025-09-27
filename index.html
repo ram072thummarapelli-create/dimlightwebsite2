@@ -34,6 +34,7 @@
       -moz-osx-font-smoothing:grayscale;
     }
 
+    /* Center headings site-wide, but keep brand heading left */
     h1,h2,h3,h4,h5,h6{
       font-family: 'Poppins', sans-serif;
       color:#071017;
@@ -41,7 +42,10 @@
       line-height:1.06;
       letter-spacing: -0.01em;
       font-weight:700;
+      text-align:center; /* center headings */
     }
+    /* keep the brand (logo area) left aligned */
+    .brand h1 { text-align:left; }
 
     .heading-highlight{
       display:inline-block;
@@ -52,6 +56,7 @@
       border-left:4px solid rgba(242,138,30,0.18);
       color: #08101a;
       font-weight:800;
+      text-align:center;
     }
 
     .wrap{
@@ -78,8 +83,18 @@
 
     .card{background:var(--card-bg);padding:18px;border-radius:var(--radius);box-shadow:0 8px 20px rgba(20,20,30,0.04)}
 
-    .section-heading{display:inline-block;position:relative;font-size:20px;margin:0 0 8px 0;padding-bottom:6px;font-weight:800;letter-spacing:-0.01em}
-    .section-heading::after{content:"";display:block;height:3px;width:56px;border-radius:3px;background:linear-gradient(90deg,var(--accent), #f7b274);margin-top:8px}
+    /* Section heading — center in container and keep underline */
+    .section-heading{
+      display:block;
+      margin:0 auto 12px auto;
+      position:relative;
+      font-size:20px;
+      padding-bottom:6px;
+      font-weight:800;
+      letter-spacing:-0.01em;
+      text-align:center;
+    }
+    .section-heading::after{content:"";display:block;height:3px;width:56px;border-radius:3px;background:linear-gradient(90deg,var(--accent), #f7b274);margin:8px auto 0}
 
     input[type="text"], input[type="email"], input[type="tel"], textarea, select {width:100%;padding:12px;border-radius:10px;border:1px solid #e6e9ec;background:transparent;color:inherit;font-size:15px;outline-color:var(--accent);transition:box-shadow .12s ease, transform .06s ease}
     input:focus, textarea:focus{box-shadow:0 8px 20px rgba(242,138,30,0.08);transform:translateY(-1px)}
@@ -102,16 +117,17 @@
     details[open] .chev{transform:rotate(180deg)}
     details > div{padding:14px 16px;background:var(--card-bg);border-radius:0 0 12px 12px;color:var(--muted);box-shadow:0 8px 24px rgba(12,16,20,0.04);line-height:1.7}
 
-    p, li { max-width:var(--measure); }
+    p, li { max-width:var(--measure); margin-left:auto; margin-right:auto; }
     .stat-card strong{font-size:20px; display:block}
 
     .two-col{display:grid;grid-template-columns:1fr 320px;gap:20px}
     .two-col-reverse{display:grid;grid-template-columns:1fr 360px;gap:12px;align-items:center}
-    .hero-cta-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    .hero-cta-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:center}
     .team-block{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
     .team-block img{width:48%;min-width:180px;border-radius:10px;object-fit:cover}
     .team-block .team-card{flex:1;background:var(--card-bg);padding:16px;border-radius:12px;box-shadow:0 8px 18px rgba(20,20,30,0.04)}
 
+    /* About hero improved for mobile: flexible columns, better spacing */
     .about-hero{
       display:grid;
       grid-template-columns:1fr 360px;
@@ -156,8 +172,13 @@
 
     .map-card iframe { width:100%; min-height:220px; border:0; display:block; }
 
-    .hero-grid h2{ font-size:clamp(20px, 3.2vw, 36px); line-height:1.05; margin:0; }
-    .hero-grid p{ font-size:clamp(14px, 1.6vw, 16px); color:var(--muted) }
+    /* Hero tweaks and forced two-line hero */
+    .hero-grid{display:grid;grid-template-columns:1fr 440px;gap:34px;align-items:center}
+    .hero-title { font-size:clamp(22px, 3.6vw, 42px); line-height:1.02; margin:0; display:block; font-weight:800; text-align:center; }
+    .hero-sub { color:var(--muted); max-width:var(--measure); font-size:clamp(15px,1.6vw,17px); margin:14px auto 0; text-align:center; }
+
+    /* Make CTA centered (good for mobile) */
+    .hero-cta-row { justify-content:center; }
 
     @media (max-width:980px){
       .hero-grid{grid-template-columns:1fr}
@@ -168,6 +189,10 @@
       .tabs{display:none;position:absolute;right:18px;top:68px;flex-direction:column;background:var(--card-bg);box-shadow:0 18px 40px rgba(12,16,20,0.08);border-radius:12px;padding:12px;width:260px}
       .tabs.show{display:flex}
       .tabs .tab-btn{display:block;width:100%;text-align:left;padding:14px 14px;font-size:16px;border-radius:10px;margin-bottom:6px}
+      /* About aside becomes inline image with spacing */
+      .about-hero aside { order: -1; }
+      .about-hero { gap:18px; }
+      .about-hero img { height:220px; }
     }
 
     @media (max-width:680px){
@@ -180,6 +205,8 @@
       .section-heading { font-size:18px; }
       .heading-highlight { padding:6px 10px; font-size:14px; }
       .hero-cta-row { gap:8px; }
+      .hero-title { font-size: clamp(20px, 7.5vw, 34px); }
+      .hero-sub { font-size:14px; }
     }
 
     a:focus, button:focus, input:focus, textarea:focus { outline: 3px solid rgba(242,138,30,0.12); outline-offset:3px; }
@@ -221,11 +248,16 @@
   <main class="wrap">
     <!-- HOME -->
     <section id="home-pane" class="tab-pane active" aria-labelledby="home">
-      <div class="hero-grid" style="display:grid;grid-template-columns:1fr 440px;gap:34px;align-items:center">
+      <div class="hero-grid">
         <div>
           <div class="hero">
-            <h2 class="heading-highlight">We help <span style="color:#000">good businesses</span> become <span style="background:linear-gradient(90deg, rgba(242,138,30,0.12), rgba(242,138,30,0.02));padding:4px 6px;border-radius:6px;color:var(--accent);font-weight:800">GREAT.</span></h2>
-            <p style="color:var(--muted);max-width:var(--measure);font-size:clamp(15px,1.6vw,17px)">Creative films, thumb-stopping reels, and campaigns built to grow revenue. We focus on measurable growth — views, leads and sales.</p>
+            <!-- Forced two-line hero as requested -->
+            <h2 class="hero-title">
+              <span class="hero-line1">We help good businesses become</span>
+              <span class="hero-line2" style="color:var(--accent); font-weight:900;"> GREAT.</span>
+            </h2>
+
+            <p class="hero-sub">Creative films, thumb-stopping reels, and campaigns built to grow revenue. We focus on measurable growth — views, leads and sales.</p>
           </div>
 
           <div style="margin-top:18px">
@@ -233,7 +265,7 @@
               <button class="btn" data-action="open-contact">Start a project →</button>
               <button class="btn secondary" data-action="open-services">Explore services</button>
             </div>
-            <div style="font-size:14px;color:var(--muted);margin-top:12px">Trusted by brands & storytellers</div>
+            <div style="font-size:14px;color:var(--muted);margin-top:12px;text-align:center">Trusted by brands & storytellers</div>
           </div>
         </div>
 
@@ -241,51 +273,57 @@
           <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1400&q=60" alt="Hero visual" style="width:100%;border-radius:14px;display:block;box-shadow:0 10px 36px rgba(12,16,20,0.06)">
         </div>
       </div>
+      <br>
 
       <div class="center" style="margin-top:42px">
         <h3 class="section-heading heading-highlight">Our Core Strengths 💡</h3>
       </div>
+      <br>
 
-      <div style="display:flex;gap:14px;margin-top:14px;flex-wrap:wrap">
-        <div class="card" style="flex:1;min-width:200px;display:flex;flex-direction:column;gap:10px">
+      <div style="display:flex;gap:14px;margin-top:14px;flex-wrap:wrap;justify-content:center">
+        <div class="card" style="flex:1;min-width:200px;display:flex;flex-direction:column;gap:10px;max-width:320px">
           <div class="emoji" aria-hidden>🚀</div>
-          <strong>Growth Driven</strong>
-          <p class="mini" style="margin-top:8px">We build for measurable impact — reach, leads & sales.</p>
+          <strong style="text-align:center">Growth Driven</strong>
+          <p class="mini" style="margin-top:8px;text-align:center">We build for measurable impact — reach, leads & sales.</p>
         </div>
 
-        <div class="card" style="flex:1;min-width:200px;display:flex;flex-direction:column;gap:10px">
+        <div class="card" style="flex:1;min-width:200px;display:flex;flex-direction:column;gap:10px;max-width:320px">
           <div class="emoji" aria-hidden>🎬</div>
-          <strong>Cinematic Quality</strong>
-          <p class="mini" style="margin-top:8px">Director-led craft and polished production values.</p>
+          <strong style="text-align:center">Cinematic Quality</strong>
+          <p class="mini" style="margin-top:8px;text-align:center">Director-led craft and polished production values.</p>
         </div>
 
-        <div class="card" style="flex:1;min-width:200px;display:flex;flex-direction:column;gap:10px">
+        <div class="card" style="flex:1;min-width:200px;display:flex;flex-direction:column;gap:10px;max-width:320px">
           <div class="emoji" aria-hidden>⚡</div>
-          <strong>Fast & Agile</strong>
-          <p class="mini" style="margin-top:8px">Quick turnarounds while keeping creative quality high.</p>
+          <strong style="text-align:center">Fast & Agile</strong>
+          <p class="mini" style="margin-top:8px;text-align:center">Quick turnarounds while keeping creative quality high.</p>
         </div>
       </div>
-         <section style="padding-top:26px;padding-bottom:26px">
-        <div class="center">
+
+      <section style="padding-top:26px;padding-bottom:26px">
+          <br>
+        <div style="text-align:center">
           <h3 class="section-heading heading-highlight">Why Brands Choose Dimlight ✨</h3>
           <p style="margin-top:12px; max-width:760px; margin-left:auto; margin-right:auto">From fast-moving startups to established companies, we combine director-led creativity with performance marketing to produce content that looks cinematic and converts.</p>
         </div>
 
         <div style="margin-top:28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px">
-          <div class="card"><strong style="font-size:20px">30+</strong><div style="margin-top:8px;font-weight:700">Award-Winning Short Films</div><p class="mini" style="margin-top:8px">Festival wins & curated storytelling.</p></div>
-          <div class="card"><strong style="font-size:20px">100+</strong><div style="margin-top:8px;font-weight:700">Corporate Videos</div><p class="mini" style="margin-top:8px">Polished, on-brand video for internal & external comms.</p></div>
-          <div class="card"><strong style="font-size:20px">Global</strong><div style="margin-top:8px;font-weight:700">Clients & Recognition</div><p class="mini" style="margin-top:8px">Work trusted across markets & festivals.</p></div>
-          <div class="card"><strong style="font-size:20px">Partners</strong><div style="margin-top:8px;font-weight:700">Trusted Partners</div><p class="mini" style="margin-top:8px">Collaborations with agencies and platforms.</p></div>
+          <div class="card" style="text-align:center"><strong style="font-size:20px">30+</strong><div style="margin-top:8px;font-weight:700">Award-Winning Short Films</div><p class="mini" style="margin-top:8px">Festival wins & curated storytelling.</p></div>
+          <div class="card" style="text-align:center"><strong style="font-size:20px">100+</strong><div style="margin-top:8px;font-weight:700">Corporate Videos</div><p class="mini" style="margin-top:8px">Polished, on-brand video for internal & external comms.</p></div>
+          <div class="card" style="text-align:center"><strong style="font-size:20px">Global</strong><div style="margin-top:8px;font-weight:700">Clients & Recognition</div><p class="mini" style="margin-top:8px">Work trusted across markets & festivals.</p></div>
+          <div class="card" style="text-align:center"><strong style="font-size:20px">Partners</strong><div style="margin-top:8px;font-weight:700">Trusted Partners</div><p class="mini" style="margin-top:8px">Collaborations with agencies and platforms.</p></div>
         </div>
       </section>
 
       <section class="center" style="padding-top:18px;padding-bottom:18px">
+                <br>
         <h3 class="section-heading heading-highlight">About Dimlight</h3>
         <p style="margin-top:12px; max-width:780px; margin-left:auto; margin-right:auto">Founded by <strong>Ram Sardhar</strong> in Hyderabad, Dimlight is a creative studio combining cinematic storytelling with digital growth expertise. From short films to branded campaigns, our focus is always on emotion, craft and measurable impact.</p>
       </section>
 
       <section style="padding-top:18px;padding-bottom:18px">
-        <div class="center">
+        <div style="text-align:center">
+            <br>
           <h3 class="section-heading heading-highlight" style="margin-bottom:12px">What Our Clients Say</h3>
           <p style="margin-top:8px;max-width:800px;margin-left:auto;margin-right:auto;color:var(--muted)">(Testimonials are shown for illustration — replace with real quotes.)</p>
         </div>
@@ -301,35 +339,35 @@
       </section>
 
       <section style="padding-top:18px;padding-bottom:18px">
-        <div class="center">
+        <div style="text-align:center">
+            <br>
           <h3 class="section-heading heading-highlight">Awards & Recognitions 🏆</h3>
           <p style="margin-top:12px; max-width:720px; margin-left:auto; margin-right:auto">Our work has been recognised with industry awards that highlight creativity, storytelling and impact.</p>
         </div>
 
         <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:18px; margin-top:20px">
-   <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:18px; margin-top:20px">
-            <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:18px; margin-top:20px">
           <div class="card"><img src="award1orginal.png" alt="Award 1" style="width:100%;height:300px;object-fit:cover;border-radius:8px"><div style="margin-top:10px;font-weight:700">Emerging Filmmaker 2021</div><p class="mini" style="margin-top:6px">Honoured at ravindhra bharathi for the film Be In The Moment.</p></div>
-           <div class="card"><img src="award2.png" alt="Award 2" style="width:100%;height:300px;object-fit:cover;border-radius:8px"><div style="margin-top:10px;font-weight:700">Emerging Filmmaker 2022</div><p class="mini" style="margin-top:6px">outstanding participation in the.</p></div>
+          <div class="card"><img src="award2.png" alt="Award 2" style="width:100%;height:300px;object-fit:cover;border-radius:8px"><div style="margin-top:10px;font-weight:700">Emerging Filmmaker 2022</div><p class="mini" style="margin-top:6px">outstanding participation in the.</p></div>
           <div class="card"><img src="award3.png" alt="Award 3" style="width:100%;height:300px;object-fit:cover;border-radius:8px"><div style="margin-top:10px;font-weight:700">Best documentary film On TSRTC 2023</div><p class="mini" style="margin-top:6px">Honoured by TSRTC Chairman VC Sajjanar on the occasion of the 75th Independence Day at Ravindra Bharathi.</p></div>
         </div>
       </section>
 
       <section style="padding-top:18px;padding-bottom:18px">
-        <div class="center">
+        <div style="text-align:center">
           <h3 class="section-heading heading-highlight">How We Grow Your Revenue 💹</h3>
           <p style="margin-top:12px; max-width:720px; margin-left:auto; margin-right:auto">We blend market insights, story-first creative, and targeted distribution to turn attention into customers.</p>
         </div>
 
         <div style="margin-top:20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px">
-          <div class="card">📊<div style="margin-top:8px;font-weight:700">Deep Research</div><p class="mini" style="margin-top:8px">Audience and competitor insight to inform creative strategy.</p></div>
-          <div class="card">💡<div style="margin-top:8px;font-weight:700">Creative Concepts</div><p class="mini" style="margin-top:8px">Story angles and hooks tailored to performance.</p></div>
-          <div class="card">🚀<div style="margin-top:8px;font-weight:700">Smart Distribution</div><p class="mini" style="margin-top:8px">Optimised launch + paid media for ROI.</p></div>
+          <div class="card" style="text-align:center">📊<div style="margin-top:8px;font-weight:700">Deep Research</div><p class="mini" style="margin-top:8px">Audience and competitor insight to inform creative strategy.</p></div>
+          <div class="card" style="text-align:center">💡<div style="margin-top:8px;font-weight:700">Creative Concepts</div><p class="mini" style="margin-top:8px">Story angles and hooks tailored to performance.</p></div>
+          <div class="card" style="text-align:center">🚀<div style="margin-top:8px;font-weight:700">Smart Distribution</div><p class="mini" style="margin-top:8px">Optimised launch + paid media for ROI.</p></div>
         </div>
       </section>
 
       <section style="padding-top:18px;padding-bottom:18px">
-        <div class="center"><h3 class="section-heading heading-highlight">Frequently Asked Questions ❓</h3></div>
+          <br>
+        <div style="text-align:center"><h3 class="section-heading heading-highlight">Frequently Asked Questions ❓</h3></div>
         <div style="max-width:900px; margin:20px auto; display:grid; gap:12px">
            <details>
             <summary>
@@ -394,13 +432,11 @@
         </div>
       </section>
 
-      <!-- Other home content omitted for brevity in this snippet (kept unchanged) -->
-
     </section>
 
     <!-- SERVICES (unchanged) -->
     <section id="services-pane" class="tab-pane" aria-labelledby="services">
-      <div class="center">
+      <div style="text-align:center">
         <h3 class="section-heading heading-highlight">Our Services</h3>
         <p style="margin-top:10px; max-width:760px; margin-left:auto; margin-right:auto">Full-stack creative & distribution services tailored to your growth goals.</p>
       </div>
@@ -416,9 +452,19 @@
         <div class="card"><img src="https://cdn-icons-png.flaticon.com/512/1828/1828462.png" width="48" alt=""><div style="font-weight:700; margin-top:10px">Brand Development & Creative Design</div><p class="mini" style="margin-top:8px">Transform your corporate identity with our strategic branding and creative design services.</p></div>
         <div class="card"><img src="https://cdn-icons-png.flaticon.com/512/2922/2922835.png" width="48" alt=""><div style="font-weight:700; margin-top:10px">Video Production </div><p class="mini" style="margin-top:8px">Capture attention with high-quality, cinematic video content.</p></div>
       </div>
+      
+      <div style="margin-top:20px">
+          <br>
+        <h2 class="section-heading heading-highlight">Add-ons</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:12px">
+          <div class="card"><h3>Brand Film</h3><p class="mini">1–3 min cinematic story for founders, products or events.</p></div>
+          <div class="card"><h3>YouTube Edit</h3><p class="mini">Long-form edits, captions, chapters, and thumbnails.</p></div>
+          <div class="card"><h3>Paid Campaigns</h3><p class="mini">Simple, local reach ads via Meta or LinkedIn to amplify results.</p></div>
+        </div>
+      </div>
     </section>
 
-    <!-- PORTFOLIO — FIXED: proper responsive .video-wrap with iframe (no inline heights) -->
+    <!-- PORTFOLIO — responsive .video-wrap -->
     <section id="portfolio-pane" class="tab-pane" aria-labelledby="portfolio">
       <h1 class="heading-highlight">Our Works</h1>
       <div style="margin-top:12px">
@@ -462,12 +508,12 @@
       </div>
     </section>
 
-    <!-- ABOUT (unchanged layout/content) -->
+    <!-- ABOUT (mobile-friendly stacking improved) -->
     <section id="about-pane" class="tab-pane" role="region" aria-labelledby="about-hero-title">
       <div class="about-hero">
         <div>
           <div class="about-kicker">ABOUT DIMLIGHT</div>
-          <h1 id="about-hero-title" style="font-size:36px; margin-top:12px">We craft stories that last, <span style="color:var(--accent);font-weight:900">not trends that fade.</span></h1>
+          <h1 id="about-hero-title" style="font-size:32px; margin-top:12px">We craft stories that last, <span style="color:var(--accent);font-weight:900">not trends that fade.</span></h1>
           <p style="color:var(--muted);font-size:16px;margin-top:12px;max-width:66ch">
             Dimlight is a fast-growing creative studio combining film-led craft with growth-first thinking. We design narratives, visuals and campaigns that create emotional resonance and measurable business results.
           </p>
@@ -481,21 +527,22 @@
         </aside>
       </div>
 
-      <!-- rest of about content kept same as your original (omitted here for brevity in response) -->
       <div style="display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:start;margin-top:8px">
         <div class="card">
-          <h2>Our Journey</h2>
+          <h2 style="text-align:center">Our Journey</h2>
           <div class="timeline" role="list" aria-label="Company timeline" style="margin-top:8px">
             <div class="event" role="listitem">
               <span class="dot" aria-hidden="true"></span>
               <h4>Roots in Storytelling</h4>
               <p>We began in the trenches of independent filmmaking — honing our craft on short films and documentaries.</p>
             </div>
+
             <div class="event" role="listitem">
               <span class="dot" aria-hidden="true"></span>
               <h4>Blending Art & Impact</h4>
               <p>We merged cinematic craft with distribution-first thinking so beautiful films also perform in feeds and funnels.</p>
             </div>
+
             <div class="event" role="listitem">
               <span class="dot" aria-hidden="true"></span>
               <h4>Scaling for Growth</h4>
@@ -547,9 +594,10 @@
       </section>
     </section>
 
-     <section id="contact-pane" class="tab-pane" aria-labelledby="contact">
+    <!-- CONTACT pane -->
+    <section id="contact-pane" class="tab-pane" aria-labelledby="contact">
       <section style="padding-top:28px;padding-bottom:8px">
-        <div style="max-width:1100px;margin:0 auto;padding:0 12px">
+        <div style="max-width:1100px;margin:0 auto;padding:0 12px; text-align:center">
           <h1 class="heading-highlight" style="margin:0 0 8px">Let’s create something unforgettable</h1>
           <p class="mini" style="margin:0 0 8px">Tell us about your brand and goals. We’ll reply within 24 hours.</p>
         </div>
@@ -586,7 +634,7 @@
                   <textarea id="cf-message" name="message" rows="5" required placeholder="Tell us about your project"></textarea>
                 </label>
 
-                <div style="margin-top:14px;display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+                <div style="margin-top:14px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:center">
                   <button id="cf-submit" class="btn" type="submit">Send</button>
                   <a class="btn secondary" href="https://wa.me/917207546134" target="_blank" rel="noopener">WhatsApp Us</a>
                 </div>
@@ -595,11 +643,11 @@
 
             <div class="card">
               <h3 style="font-size:18px;margin-bottom:6px" class="heading-subtle">Details</h3>
-              <p><b>Email:</b> hello@dimlight.example</p>
-              <p><b>Location:</b> Hyderabad, India</p>
-              <p><b>Socials:</b> Instagram · LinkedIn · YouTube</p>
+              <p style="text-align:center"><b>Email:</b> hello@dimlight.example</p>
+              <p style="text-align:center"><b>Location:</b> Hyderabad, India</p>
+              <p style="text-align:center"><b>Socials:</b> Instagram · LinkedIn · YouTube</p>
 
-              <p><b>Phone:</b> <a href="tel:+917207546134" style="color:var(--accent); text-decoration:none;">+91 72075 46134</a></p>
+              <p style="text-align:center"><b>Phone:</b> <a href="tel:+917207546134" style="color:var(--accent); text-decoration:none;">+91 72075 46134</a></p>
 
               <section class="map-card" style="margin-top:12px">
                 <iframe title="Dimlight location - Hyderabad" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3805.2202910218555!2d78.40199021485886!3d17.385044988169677!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb9735d6b9f0bd%3A0x4e7b1c2b6b0e0f2!2sHyderabad%2C%20Telangana%2C%20India!5e0!3m2!1sen!2sus!4v1695310000000" loading="lazy"></iframe>
@@ -745,4 +793,3 @@
   </script>
 </body>
 </html>
-
